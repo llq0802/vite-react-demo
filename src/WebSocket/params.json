@@ -1,0 +1,46 @@
+[
+  {
+    "commandId": "100001",
+    "clientId": "78cbbb39614a4528bc85cbd923b58ffc",
+    "sessionId": "49c88a90ad6e4238a663ef948db16f5a",
+    "jsonContent": {
+      "clientId": "78cbbb39614a4528bc85cbd923b58ffc",
+      "digitalHumanId": "b86863a244e24f18be79502fa685842a",
+      "scenarioId": null,
+      "customerServiceId": null,
+      "sessionId": "49c88a90ad6e4238a663ef948db16f5a",
+      "clientVideoUrl": "rtsp://10.128.22.20:5544/49c88a90ad6e4238a663ef948db16f5a",
+      "hasVirtualImage": false,
+      "clientType": "AI_ASSISTANT",
+      "clientSystemType": "WINDOWS",
+      "videoSize": null,
+      "clientName": "DESKTOP-UVP2VO8-YC",
+      "visibility": "VISIBLE",
+      "greeting": "GREET",
+      "staFbxMode": "BVH",
+      "userId": null,
+      "serverAddress": "10.128.165.14:8082",
+      "deviceType": "PC",
+      "version": null,
+      "token": null,
+      "dcsCmsIp": null,
+      "dcsCmsPort": 0,
+      "dcsEssIp": null,
+      "dcsEssPort": 0,
+      "dcsUserName": null,
+      "dcsPasswd": null,
+      "dcsDeviceId": null,
+      "deviceId": null,
+      "osVersion": "Microsoft Windows NT 6.2.9200.0"
+    }
+  },
+
+  {
+    "commandId": "200001",
+    "clientId": "78cbbb39614a4528bc85cbd923b58ffc",
+    "sessionId": "49c88a90ad6e4238a663ef948db16f5a",
+    "jsonContent": {
+      "message": "你好，你现在能正常工作吗？"
+    }
+  }
+]

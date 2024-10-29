@@ -1,5 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 
+function getCursorPos(contentEditableElement: HTMLElement): number {
+  const selection = window.getSelection();
+  if (selection && selection.rangeCount > 0) {
+    const range = selection.getRangeAt(0);
+    const preCaretRange = range.cloneRange();
+    preCaretRange.selectNodeContents(contentEditableElement);
+    preCaretRange.setEnd(range.endContainer, range.endOffset);
+    return preCaretRange.toString().length;
+  }
+  return 0;
+}
+
 const ContentEditable = () => {
   const editableRef = useRef(null);
 
@@ -8,20 +20,20 @@ const ContentEditable = () => {
     const handleKeyDown = (event) => {
       switch (event.key) {
         case 'ArrowLeft':
-          moveCursorLeft(editableRef.current);
           event.preventDefault();
+          moveCursorLeft(editableRef.current);
           break;
         case 'ArrowRight':
-          moveCursorRight(editableRef.current);
           event.preventDefault();
+          moveCursorRight(editableRef.current);
           break;
         case 'Backspace':
-          deleteTextBeforeCursor(editableRef.current);
           event.preventDefault();
+          deleteTextBeforeCursor(editableRef.current);
           break;
         case 'Delete':
-          deleteTextAfterCursor(editableRef.current);
           event.preventDefault();
+          deleteTextAfterCursor(editableRef.current);
           break;
         default:
           break;
@@ -51,14 +63,17 @@ const ContentEditable = () => {
     const startContainer = range.startContainer;
     const startOffset = range.startOffset;
     console.log('==moveCursorLeft====>', range);
-    if (startOffset > 0) {
+    if (startOffset > 0 && startContainer.nodeName === '#text') {
       range.setStart(startContainer, startOffset - 1);
       range.collapse(true);
-    } else if (startContainer.previousSibling && startContainer.previousSibling?.dataset?.nodetype === 'tag') {
-      const prevNode = startContainer.previousSibling;
-      range.setStart(prevNode, 0);
-      range.collapse(true);
     }
+
+    // else if (startContainer.previousSibling && startContainer.previousSibling?.dataset?.nodetype === 'tag') {
+    //   const prevNode = startContainer.previousSibling;
+    //   range.setStart(prevNode, 0);
+    //   range.collapse(true);
+    // }
+
     sel.removeAllRanges();
     sel.addRange(range);
   };
@@ -67,21 +82,36 @@ const ContentEditable = () => {
   const moveCursorRight = (contentEditableElement) => {
     const sel = window.getSelection();
     if (sel.rangeCount <= 0) return;
-    const range = sel.getRangeAt(0);
-
+    const range = sel.getRangeAt(0).cloneRange();
     const startContainer = range.startContainer;
     const startOffset = range.startOffset;
-    console.log('==moveCursorRight====>', range);
-    debugger;
-    if (startOffset < startContainer.textContent.length) {
+
+    // console.log('==moveCursorRight====>', range);
+
+    if (startOffset < startContainer.textContent.length && startContainer.nodeName === '#text') {
       range.setStart(startContainer, startOffset + 1);
       range.collapse(true);
-    } else if (startContainer.nextSibling && startContainer.nextSibling?.dataset?.nodetype === 'tag') {
-      const nextNode = startContainer.nextSibling;
-      // range.selectNodeContents(nextNode); // 选择整个div的内容
-      range.setEnd(nextNode, 1);
-      range.collapse(false); // 将范围折叠到开始位置
     }
+
+    // else if (startContainer.nextSibling && startContainer.nextSibling?.dataset?.nodetype === 'tag') {
+    //   const nextNode = startContainer.nextSibling;
+
+    //   console.log('==moveCursorRight====>', range);
+    //   range.setStart(startContainer, startContainer.textContent.length);
+    //   range.setEnd(startContainer, startContainer.textContent.length);
+    //   // range.setEndAfter(startContainer); // 设置光标在插入的位置
+    //   // range.setStartAfter(startContainer); // 设置光标在插入的位置
+    //   // range.selectNodeContents(nextNode); // 选择整个div的内容
+    //   // range.setEnd(nextNode, 1);
+    //   // range.collapse(true); // 将范围折叠到开始位置
+    // } else {
+    //   // range.setStart(startContainer, 3);
+    //   // range.collapse(false);
+    //   // range.setEndAfter(oLastNode ) ; // 设置光标在插入的位置
+    //   // range.setStartAfter(oLastNode ); // 设置光标在插入的位置
+    //   // range.setStart(range.startContainer, startOffset + 1);
+    //   // range.collapse(true);
+    // }
 
     sel.removeAllRanges();
     sel.addRange(range);
@@ -184,18 +214,24 @@ const ContentEditable = () => {
   const adjustCursorOnFocus = (contentEditableElement) => {
     const sel = window.getSelection();
     if (sel.rangeCount > 0) {
-      const range = sel.getRangeAt(0);
+      const range = sel.getRangeAt(0).cloneRange();
       const startContainer = range.startContainer;
-      if (isTagElement(startContainer)) {
-        if (startContainer.textContent.length !== range.startOffset) {
-          range.setStart(
-            startContainer.parentElement?.previousSibling,
-            startContainer.parentElement?.previousSibling.textContent?.length
-          );
-          range.collapse(true);
-          sel.removeAllRanges();
-          sel.addRange(range);
-        }
+      const startOffset = range.startOffset;
+      // console.log('==adjustCursorOnFocus-range====>', range);
+      if (isTagElement(range.startContainer)) {
+        range.setStartBefore(range.startContainer); // 设置光标在插入的位置
+        range.setEndBefore(range.startContainer); // 设置光标在插入的位置
+        sel.removeAllRanges();
+        sel.addRange(range);
+        // if (startContainer.textContent.length !== range.startOffset) {
+        //   range.setStart(
+        //     startContainer.parentElement?.previousSibling,
+        //     startContainer.parentElement?.previousSibling.textContent?.length
+        //   );
+        //   range.collapse(true);
+        //   sel.removeAllRanges();
+        //   sel.addRange(range);
+        // }
       }
     }
   };
@@ -205,10 +241,13 @@ const ContentEditable = () => {
       <div
         suppressContentEditableWarning
         ref={editableRef}
-        contentEditable='true'
+        contentEditable
         style={{ border: '1px solid #ccc', padding: '10px', minHeight: '100px' }}
       >
-        This <b data-nodetype='tag'>contenteditable</b>
+        This
+        <b style={{ background: '#c4d966' }} data-nodetype='tag'>
+          contenteditable
+        </b>
         element.
       </div>
     </>

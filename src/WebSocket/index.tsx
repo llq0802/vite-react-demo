@@ -28,7 +28,7 @@ export default () => {
           jsonContent: { message: '' },
         };
         sendMessage(JSON.stringify(msg));
-      }, 11_000);
+      });
     },
     onMessage({ data }) {
       console.log('===从服务端接受到的消息===：', data);

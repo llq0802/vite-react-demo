@@ -2,6 +2,8 @@ import { Flex } from 'antd';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import WebSocket from './WebSocket';
 import TagInput from './TagInput';
+import Lexical from './Lexical';
+import MyReactQuill from './react-quill';
 
 function Home() {
   return <h1>Home</h1>;
@@ -54,6 +56,26 @@ function App() {
         >
           TagInput
         </NavLink>
+        <NavLink
+          to='/lexical'
+          style={({ isActive }) => {
+            return {
+              fontWeight: isActive ? 'bold' : 'normal',
+            };
+          }}
+        >
+          Lexical
+        </NavLink>
+        <NavLink
+          to='/react-quill'
+          style={({ isActive }) => {
+            return {
+              fontWeight: isActive ? 'bold' : 'normal',
+            };
+          }}
+        >
+          react-quill
+        </NavLink>
       </Flex>
       <Flex flex='1' vertical align='center' justify='center'>
         <Routes>
@@ -61,6 +83,8 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/websocket' element={<WebSocket />} />
           <Route path='/tag-input' element={<TagInput />} />
+          <Route path='/lexical' element={<Lexical />} />
+          <Route path='/react-quill' element={<MyReactQuill />} />
         </Routes>
       </Flex>
     </BrowserRouter>

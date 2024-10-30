@@ -1,0 +1,61 @@
+.tagTextAreaWrapper {
+  position: relative;
+  .my-tips {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    color: #999;
+    font-size: 12px;
+  }
+
+  .myTextArea {
+    // -webkit-user-modify: read-write-plaintext-only !important;
+    -webkit-user-modify: read-write !important;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    box-sizing: border-box;
+    word-break: break-word;
+    // height: 100px;
+    width: 300px;
+    max-height: 300px;
+    max-width: 600px;
+    outline: unset;
+    padding: 6px 10px;
+    border-radius: 10px;
+    resize: both;
+  }
+  wise,
+  i {
+    background-color: #8fe616;
+    color: #5387f7;
+    padding: 0 4px;
+    margin: 0 2px;
+    border-radius: 2px;
+    white-space: nowrap;
+    cursor: default;
+    -webkit-user-modify: read-only !important;
+  }
+
+  div,
+  p,
+  pre,
+  span,
+  b,
+  u,
+  em,
+  ul,
+  li {
+    -webkit-user-modify: read-only !important;
+  }
+}
+
+// -webkit-user-modify
+// 这是个css属性，通过对应属性的设置也可以达到同样的效果。
+// read-only： 默认值，元素只读，不可编辑；
+
+// read-write： 可以编辑，支持富文本；
+
+// read-write-plaintext-only： 可以编辑，不支持富文本；
+
+// write-only： 使元素仅用于编辑（几乎没有浏览器支持）

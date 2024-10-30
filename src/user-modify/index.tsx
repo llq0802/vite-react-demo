@@ -1,91 +1,101 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from 'antd';
-import './index.less';
+import clx from 'classnames';
+import styles from './index.module.less';
+import { useControllableValue, useMount } from 'ahooks';
+import useSelectionChange from './useSelectionchange';
 
-export default function MyTagInput() {
-  const inputTag = useRef<HTMLDivElement>(null);
-  const [showTips, setShowTips] = useState(false);
+const regex1 = /<i\s[^>]*data-tagvalue="([^"]+)">([^<]+)<\/i>/g;
+const regex2 = /{{#(\d+)\.([^#]+)#}}/g;
+
+export default function TagInput(props) {
+  const { placeholder = '请输入', style, className, inputStyle, inputClassName, placeholderStyle } = props;
+  const [state, setState] = useControllableValue<string>(props, {
+    // defaultValue: '',
+    defaultValue: '45354{{#123.logo_name#}}2344{{#456.logo_name2#}}',
+  });
+  const inputRef = useRef<HTMLDivElement>(null);
+  const [showPlaceholder, setshowPlaceholder] = useState(true);
+  const [contentId] = useState(() => `a-tag-input-${new Date().getTime()}-${Math.ceil(Math.random() * 1000)}`);
+  const { rangeObj } = useSelectionChange(contentId);
 
   const handleInput = (e) => {
-    setShowTips(!e.target.textContent?.length);
-  };
-  // 鼠标焦点对象
-  const [Range, setRange] = useState<Range>();
-  const [contentId] = useState(() => `a-tag-input-${new Date().getTime()}d${Math.ceil(Math.random() * 1000)}`);
-
-  useEffect(() => {
-    if (inputTag.current) {
-      setShowTips(!(inputTag as any).current.textContent.length);
+    const textContent = e.target.textContent;
+    const innerHTML = e.target.innerHTML;
+    setshowPlaceholder(!textContent?.length);
+    let replacedStr = innerHTML.replace(regex1, function (match, p1: string, p2: string) {
+      return `{{#${p1}.${p2}#}}`;
+    });
+    if (replacedStr === '<br>' || replacedStr === '' || replacedStr === '<br/>') {
+      replacedStr = '';
     }
-    const selecthandler = () => {
-      // 监听选定文本的移动
-      let sel = window.getSelection();
-      let range = sel ? (sel.rangeCount > 0 ? sel?.getRangeAt(0) : null) : null;
-      if (range && range.commonAncestorContainer.ownerDocument?.activeElement?.id === contentId) {
-        setRange(range);
-      }
-    };
-    document.addEventListener('selectionchange', selecthandler);
-    return () => {
-      document.removeEventListener('selectionchange', selecthandler);
-    };
-  }, []);
-
-  const insertNode = (node: Element) => {
-    // 删掉选中的内容（如有）
-    Range && Range.deleteContents();
-    // 插入链接
-    Range && Range.insertNode(node);
-    Range?.collapse(false);
-    if (inputTag.current) {
-      requestAnimationFrame(() => {
-        inputTag.current?.focus();
-        setShowTips(!(inputTag as any).current.textContent.length);
-      });
-    }
+    setState(replacedStr);
   };
+
   // 添加标签
   const addTag = (text: string) => {
-    let node = document.createElement('i');
-    node.innerText = text;
-    // const cancelNode = document.createElement('span');
-    // cancelNode.innerText = '✕';
-    // cancelNode.style.color = 'black';
-    // cancelNode.onclick = (even) => {
-    //   inputTag.current?.removeChild((even.target as any).parentElement);
-    // };
-    // node.append(cancelNode);
-    insertNode(node);
+    if (!text) return;
+    const textArr = text.split('.');
+    const t1 = textArr[0];
+    const t2 = textArr[1];
+    const node = document.createElement('i');
+    node.dataset['tagvalue'] = t1; // 标签data-tag
+    node.innerText = `${t2}`;
+    if (rangeObj) {
+      rangeObj.deleteContents();
+      rangeObj.insertNode(node);
+      rangeObj?.collapse(false);
+    } else {
+      inputRef.current?.appendChild(node);
+    }
+    requestAnimationFrame(() => {
+      inputRef.current?.focus();
+      setshowPlaceholder(!(inputRef as any).current.textContent.length);
+    });
+    handleInput({ target: inputRef.current });
   };
+
+  useMount(() => {
+    if (!state) return;
+    const newStr = state.replace(regex2, function (match, p1, p2) {
+      return '<i data-tagvalue="' + p1 + '">' + p2 + '</i>';
+    });
+    inputRef.current.innerHTML = newStr;
+    requestAnimationFrame(() => {
+      setshowPlaceholder(!inputRef.current?.textContent?.length);
+    });
+  });
 
   return (
     <>
-      <div className='tagTextAreaWrapper'>
+      <div className={clx(styles.a_tag_input_wrapper, className)} style={style}>
         <div
-          className='myTextArea'
-          onInput={handleInput}
-          ref={inputTag}
+          // contentEditable
+          ref={inputRef}
+          className={clx(styles.a_tag_input, inputClassName)}
+          style={inputStyle}
           id={contentId}
-          onFocus={() => {
-            console.log('focus');
-          }}
-          onClick={(e) => {
-            const ele = e?.target as HTMLElement;
-            console.log('==onClick====>', ele);
-          }}
+          onInput={handleInput}
           onKeyDown={(e) => {
-            if (e.key === 'Backspace') {
-              console.log('==onKeyDown====>', e.target);
+            if (e.key === 'Enter') {
+              e.preventDefault();
             }
           }}
         ></div>
-        {showTips && <div className='my-tips'>请输入</div>}
+        {showPlaceholder && (
+          <div className={styles.placeholder} style={placeholderStyle}>
+            {placeholder}
+          </div>
+        )}
       </div>
+
       <Button
-        style={{
-          marginTop: 16,
+        onClick={() => {
+          inputRef.current?.focus();
+          requestAnimationFrame(() => {
+            addTag('123.logo_name');
+          });
         }}
-        onClick={() => addTag('变量1')}
         type='primary'
       >
         插入Tag
@@ -97,9 +107,6 @@ export default function MyTagInput() {
 // -webkit-user-modify
 // 这是个css属性，通过对应属性的设置也可以达到同样的效果。
 // read-only： 默认值，元素只读，不可编辑；
-
 // read-write： 可以编辑，支持富文本；
-
 // read-write-plaintext-only： 可以编辑，不支持富文本；
-
 // write-only： 使元素仅用于编辑（几乎没有浏览器支持）

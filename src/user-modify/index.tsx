@@ -8,7 +8,7 @@ import useSelectionChange from './useSelectionchange';
 const regex1 = /<i(?=[^>]*\bdata-tagvalue="([^"]+)")(?=[^>]*\bdata-taglabel="([^"]+)")[^>]*>.*?<\/i>/g;
 const regex2 = /{{#([^.]+)\.([^#]+)#}}/g;
 
-export const ATagInput = memo(function (props: ATagInputProps) {
+const ATagInput = memo(function (props: ATagInputProps) {
   const {
     value,
     onChange,
@@ -136,5 +136,5 @@ export const ATagInput = memo(function (props: ATagInputProps) {
     </div>
   );
 });
-
+export default ATagInput;
 export * from './interface';

@@ -5,10 +5,7 @@ import TagInput from './TagInput';
 import Lexical from './Lexical';
 import MyReactQuill from './react-quill';
 import MyTagInput from './user-modify';
-
-function Home() {
-  return <h1>Home</h1>;
-}
+import Home from './home';
 
 function About() {
   return <h1>About</h1>;

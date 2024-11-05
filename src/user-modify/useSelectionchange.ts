@@ -1,24 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useMemoizedFn, useMount } from 'ahooks';
+import { useRef, useState } from 'react';
 
-export default function useSelectionChange(contentId: string) {
-  const [rangeObj, setRange] = useState<Range>();
+export default function useSelectionChange(readOnly = false) {
+  const rangeObjRef = useRef<Range>();
+  const selRef = useRef<Selection>();
+  const [contentId] = useState(() => `a-tag-input-${Date.now()}`);
 
-  useEffect(() => {
-    const selecthandler = () => {
-      let sel = window.getSelection();
-      let range = sel ? (sel.rangeCount > 0 ? sel?.getRangeAt(0) : null) : null;
-      if (range && range.commonAncestorContainer.ownerDocument?.activeElement?.id === contentId) {
-        setRange(range);
-      }
-    };
+  const selecthandler = useMemoizedFn(() => {
+    if (readOnly) return;
+    selRef.current = window.getSelection()!;
+    const range = selRef.current ? (selRef.current.rangeCount > 0 ? selRef.current?.getRangeAt(0) : null) : null;
+    // const sel = window.parent.getSelection();
+    // if (range && range.commonAncestorContainer.ownerDocument?.activeElement?.id === contentId) {
+    //   rangeObjRef.current = range;
+    // }
+    if (range && document?.activeElement?.id === contentId) {
+      rangeObjRef.current = range;
+    }
+  });
+
+  useMount(() => {
     document.addEventListener('selectionchange', selecthandler);
     return () => {
       document.removeEventListener('selectionchange', selecthandler);
     };
-  }, []);
+  });
 
   return {
-    rangeObj,
-    setRange,
+    rangeObjRef,
+    selRef,
+    contentId,
   };
 }

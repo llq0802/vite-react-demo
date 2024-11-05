@@ -1,112 +1,140 @@
-import { useRef, useState } from 'react';
-import { Button } from 'antd';
+import { useControllableValue, useMount, useRafState } from 'ahooks';
 import clx from 'classnames';
+import { memo, useImperativeHandle, useRef } from 'react';
 import styles from './index.module.less';
-import { useControllableValue, useMount } from 'ahooks';
+import type { ATagInputProps } from './interface';
 import useSelectionChange from './useSelectionchange';
 
-const regex1 = /<i\s[^>]*data-tagvalue="([^"]+)">([^<]+)<\/i>/g;
-const regex2 = /{{#(\d+)\.([^#]+)#}}/g;
+const regex1 = /<i(?=[^>]*\bdata-tagvalue="([^"]+)")(?=[^>]*\bdata-taglabel="([^"]+)")[^>]*>.*?<\/i>/g;
+const regex2 = /{{#([^.]+)\.([^#]+)#}}/g;
 
-export default function TagInput(props) {
-  const { placeholder = '请输入', style, className, inputStyle, inputClassName, placeholderStyle } = props;
-  const [state, setState] = useControllableValue<string>(props, {
-    // defaultValue: '',
-    defaultValue: '45354{{#123.logo_name#}}2344{{#456.logo_name2#}}',
-  });
-  const inputRef = useRef<HTMLDivElement>(null);
-  const [showPlaceholder, setshowPlaceholder] = useState(true);
-  const [contentId] = useState(() => `a-tag-input-${new Date().getTime()}-${Math.ceil(Math.random() * 1000)}`);
-  const { rangeObj } = useSelectionChange(contentId);
+export const ATagInput = memo(function (props: ATagInputProps) {
+  const {
+    value,
+    onChange,
+    placeholder = '请输入',
+    style,
+    className,
+    actionRef,
+    inputStyle,
+    inputClassName,
+    placeholderStyle,
+    onKeyDown,
+    prefix,
+    suffix,
+    allowClear,
+    tagClassName,
+    readOnly: outReadOnly,
+    disabled,
+    renderTag,
+    isAddTagAfterFocus = true,
+    ...restProps
+  } = props;
+  const inputRef = useRef<HTMLDivElement>(null!);
+  const [state, setState] = useControllableValue<string>(props, { defaultValue: '' });
+  const [showPlaceholder, setshowPlaceholder] = useRafState(true);
+  const readOnly = outReadOnly || disabled;
+  const { selRef, rangeObjRef, contentId } = useSelectionChange(readOnly);
 
   const handleInput = (e) => {
-    const textContent = e.target.textContent;
-    const innerHTML = e.target.innerHTML;
-    setshowPlaceholder(!textContent?.length);
-    let replacedStr = innerHTML.replace(regex1, function (match, p1: string, p2: string) {
-      return `{{#${p1}.${p2}#}}`;
-    });
+    if (readOnly) return;
+    const inputDom = e.target;
+    const textContent = inputDom.textContent;
+    const innerHTML = inputDom.innerHTML;
+    let replacedStr = innerHTML.replace(regex1, (match, p1: string, p2: string) => `{{#${p1}.${p2}#}}`);
     if (replacedStr === '<br>' || replacedStr === '' || replacedStr === '<br/>') {
       replacedStr = '';
     }
-    setState(replacedStr);
+    requestAnimationFrame(() => {
+      setState(replacedStr);
+      inputDom.dataset.value = replacedStr;
+    });
+    setshowPlaceholder(!textContent?.length);
   };
 
   // 添加标签
-  const addTag = (text: string) => {
-    if (!text) return;
-    const textArr = text.split('.');
-    const t1 = textArr[0];
-    const t2 = textArr[1];
+  const addTag = (tagvalue: string, taglabel: string) => {
+    if (readOnly) return;
     const node = document.createElement('i');
-    node.dataset['tagvalue'] = t1; // 标签data-tag
-    node.innerText = `${t2}`;
-    if (rangeObj) {
-      rangeObj.deleteContents();
-      rangeObj.insertNode(node);
-      rangeObj?.collapse(false);
+    if (tagClassName) node.classList.add(tagClassName);
+    node.dataset['tagvalue'] = tagvalue;
+    node.dataset['taglabel'] = taglabel;
+    node.innerHTML = renderTag ? renderTag(tagvalue, taglabel) : taglabel;
+    if (rangeObjRef.current) {
+      rangeObjRef.current.deleteContents();
+      rangeObjRef.current.insertNode(node);
+      rangeObjRef.current?.collapse(false);
+      // rangeObjRef.current.setStartAfter(node);
+      // rangeObjRef.current.setEndAfter(node);
+      selRef.current!.removeAllRanges();
+      selRef.current!.addRange(rangeObjRef.current);
     } else {
       inputRef.current?.appendChild(node);
     }
-    requestAnimationFrame(() => {
-      inputRef.current?.focus();
-      setshowPlaceholder(!(inputRef as any).current.textContent.length);
-    });
+    if (isAddTagAfterFocus) inputRef.current?.focus();
     handleInput({ target: inputRef.current });
   };
 
+  useImperativeHandle(actionRef, () => ({
+    addTag,
+    onFocus: () => {
+      if (readOnly) return;
+      inputRef.current?.focus();
+    },
+    onBlur: () => {
+      if (readOnly) return;
+      inputRef.current?.blur();
+    },
+    clear: () => {
+      if (readOnly) return;
+      inputRef.current.innerHTML = '';
+      setshowPlaceholder(true);
+    },
+  }));
+
   useMount(() => {
     if (!state) return;
-    const newStr = state.replace(regex2, function (match, p1, p2) {
-      return '<i data-tagvalue="' + p1 + '">' + p2 + '</i>';
+    const newStr = state.replace(regex2, (match, p1, p2) => {
+      return `<i ${tagClassName ? `class=${tagClassName}` : ''} data-tagvalue="${p1}" data-taglabel="${p2}" >${
+        renderTag ? renderTag(p1, p2) : p2
+      }</i>`;
     });
-    inputRef.current.innerHTML = newStr;
-    requestAnimationFrame(() => {
-      setshowPlaceholder(!inputRef.current?.textContent?.length);
-    });
+    inputRef.current!.innerHTML = newStr;
+    inputRef.current.dataset.value = newStr;
+    setshowPlaceholder(!inputRef.current?.textContent?.length);
   });
-
   return (
-    <>
-      <div className={clx(styles.a_tag_input_wrapper, className)} style={style}>
+    <div
+      className={clx(styles.a_tag_input_wrapper, readOnly ? styles.a_tag_input_readonly_wrapper : '', className)}
+      style={style}
+    >
+      {prefix}
+      <div className={styles.a_tag_input_body}>
         <div
           // contentEditable
-          ref={inputRef}
-          className={clx(styles.a_tag_input, inputClassName)}
-          style={inputStyle}
+          {...restProps}
+          data-tag-input
           id={contentId}
+          className={clx(styles.a_tag_input, readOnly ? styles.a_tag_input_readonly : '', inputClassName)}
+          ref={inputRef}
+          style={inputStyle}
           onInput={handleInput}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               e.preventDefault();
             }
+            onKeyDown?.(e);
           }}
-        ></div>
+        />
         {showPlaceholder && (
           <div className={styles.placeholder} style={placeholderStyle}>
             {placeholder}
           </div>
         )}
       </div>
-
-      <Button
-        onClick={() => {
-          inputRef.current?.focus();
-          requestAnimationFrame(() => {
-            addTag('123.logo_name');
-          });
-        }}
-        type='primary'
-      >
-        插入Tag
-      </Button>
-    </>
+      {suffix}
+    </div>
   );
-}
+});
 
-// -webkit-user-modify
-// 这是个css属性，通过对应属性的设置也可以达到同样的效果。
-// read-only： 默认值，元素只读，不可编辑；
-// read-write： 可以编辑，支持富文本；
-// read-write-plaintext-only： 可以编辑，不支持富文本；
-// write-only： 使元素仅用于编辑（几乎没有浏览器支持）
+export * from './interface';

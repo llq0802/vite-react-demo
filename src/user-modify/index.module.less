@@ -1,47 +1,60 @@
 .a_tag_input_wrapper {
-  // width: 100%;
-  width: 250px;
+  width: 100%;
   position: relative;
   background: rgba(0, 0, 0, 0.04);
-  border-width: 1px;
+  border-width: 0.01rem;
   border-style: solid;
   border-color: transparent;
   display: inline-flex;
   min-width: 0;
-  padding: 4px 11px;
+  padding: 0.04rem 0.11rem;
   color: rgba(0, 0, 0, 0.88);
-  font-size: 14px;
+  font-size: 0.14rem;
   line-height: 1.5714285714285714;
-  border-radius: 6px;
+  border-radius: 0.06rem;
   transition: all 0.2s;
-  overflow-x: auto;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none; /* 隐藏滚动条 */
+  align-items: center;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &:focus,
+  &:focus-within {
+    outline: 0;
+    border-color: #4755e3;
+    background: #ffffff;
   }
 
   .placeholder {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 16px;
-    font-size: 13px;
+    // left: 0.1rem;
+    font-size: 0.14rem;
     pointer-events: none;
     user-select: none;
     color: rgba(0, 0, 0, 0.25);
     user-select: none;
     text-overflow: inherit;
     overflow-wrap: normal;
-    line-height: initial !important;
+    line-height: initial;
     -webkit-user-modify: read-only !important;
     white-space: pre;
     overflow: hidden;
-    letter-spacing: 1px;
+  }
+
+  .a_tag_input_body {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    position: relative;
   }
 
   .a_tag_input {
     flex: 1;
-    -webkit-user-modify: read-write-plaintext-only !important;
+    min-width: 0;
+    -webkit-user-modify: read-write-plaintext-only;
     // -webkit-user-modify: read-write !important;
     font-size: inherit;
     border: none;
@@ -50,26 +63,53 @@
     background: transparent;
     color: inherit;
     box-sizing: border-box;
-    padding: 0 2px;
     white-space: nowrap;
+    color: rgba(0, 0, 0, 0.89);
+    word-break: break-word;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none; /* 隐藏滚动条 */
+    }
     // resize: both;
-    // word-break: break-word;
   }
-  // wise,
   i {
     position: relative;
     display: inline-block;
     font-style: normal;
     -webkit-user-modify: read-only !important;
-    background: #1677ff;
+    background: #fff;
     color: #fff;
-    padding: 0px 8px;
-    margin: 0 3px;
-    border-radius: 4px;
+    padding: 0px 0.08rem;
+    margin: 0 0.04rem;
+    border-radius: 0.04rem;
     white-space: nowrap;
     cursor: default;
     pointer-events: none;
     user-select: none;
+    box-shadow: 0px 0.01rem 0.02rem 0px rgba(16, 24, 40, 0.05);
+    border-width: 1px;
+    border-style: solid;
+    width: fit-content;
+  }
+}
+
+div.a_tag_input_readonly_wrapper {
+  cursor: not-allowed;
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &:focus,
+  &:focus-within {
+    outline: 0;
+    border-color: transparent;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  div.a_tag_input_readonly {
+    -webkit-user-modify: read-only !important;
   }
 }
 

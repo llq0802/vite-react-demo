@@ -245,10 +245,10 @@ const ContentEditable = () => {
         style={{ border: '1px solid #ccc', padding: '10px', minHeight: '100px' }}
       >
         This
-        <b style={{ background: '#c4d966' }} data-nodetype='tag'>
+        <b tabIndex={-1} style={{ background: '#c4d966' }} data-nodetype='tag'>
           contenteditable
         </b>
-        element.
+        element
       </div>
     </>
   );

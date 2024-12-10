@@ -4,6 +4,7 @@ import WebSocket from './WebSocket';
 import TagInput from './TagInput';
 import Lexical from './Lexical';
 import MyReactQuill from './react-quill';
+import Q10 from './Q10';
 
 function Home() {
   return <h1>Home</h1>;
@@ -79,7 +80,8 @@ function App() {
       </Flex>
       <Flex flex='1' vertical align='center' justify='center'>
         <Routes>
-          <Route path='/' element={<Home />} />
+          {/* <Route path='/' element={<Home />} /> */}
+          <Route path='/' element={<Q10 />} />
           <Route path='/about' element={<About />} />
           <Route path='/websocket' element={<WebSocket />} />
           <Route path='/tag-input' element={<TagInput />} />

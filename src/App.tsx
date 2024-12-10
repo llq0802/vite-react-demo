@@ -4,11 +4,16 @@ import WebSocket from './WebSocket';
 import TagInput from './TagInput';
 import Lexical from './Lexical';
 import MyReactQuill from './react-quill';
+<<<<<<< HEAD
 import Q10 from './Q10';
 
 function Home() {
   return <h1>Home</h1>;
 }
+=======
+import MyTagInput from './user-modify';
+import Home from './home';
+>>>>>>> d69da706d1cae1bf114c31a79c88767d0332b4d0
 
 function About() {
   return <h1>About</h1>;
@@ -77,6 +82,16 @@ function App() {
         >
           react-quill
         </NavLink>
+        <NavLink
+          to='/user-modify'
+          style={({ isActive }) => {
+            return {
+              fontWeight: isActive ? 'bold' : 'normal',
+            };
+          }}
+        >
+          user-modify
+        </NavLink>
       </Flex>
       <Flex flex='1' vertical align='center' justify='center'>
         <Routes>
@@ -87,6 +102,7 @@ function App() {
           <Route path='/tag-input' element={<TagInput />} />
           <Route path='/lexical' element={<Lexical />} />
           <Route path='/react-quill' element={<MyReactQuill />} />
+          <Route path='/user-modify' element={<MyTagInput />} />
         </Routes>
       </Flex>
     </BrowserRouter>

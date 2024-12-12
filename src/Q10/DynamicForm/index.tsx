@@ -88,13 +88,15 @@ const DynamicFor: React.FC<PropType> = ({ rules }) => {
       case 'input':
         return (
           <Input
-            value={formData[rule.name] || ''}
-            onChange={(e) => handleChange({ target: { value: e, name: rule.name } })}
+          // value={formData[rule.name] || ''}
+          // onChange={(e) => handleChange({ target: { value: e, name: rule.name } })}
           />
         );
       case 'radio':
         return (
-          <Radio.Group onChange={handleChange} value={formData[rule.name] || ''}>
+          <Radio.Group
+          //  onChange={handleChange} value={formData[rule.name] || ''}
+          >
             {rule?.options?.map((option) => (
               <Radio key={option.value} value={option.value}>
                 {option.label}
@@ -105,8 +107,8 @@ const DynamicFor: React.FC<PropType> = ({ rules }) => {
       case 'select':
         return (
           <Select
-            value={formData[rule.name] || ''}
-            onChange={(e) => handleChange({ target: { value: e, name: rule.name } })}
+          // value={formData[rule.name] || ''}
+          // onChange={(e) => handleChange({ target: { value: e, name: rule.name } })}
           >
             {rule?.options?.map((option) => (
               <Option key={option.value} value={option.value}>
@@ -118,8 +120,8 @@ const DynamicFor: React.FC<PropType> = ({ rules }) => {
       case 'date':
         return (
           <DatePicker
-            value={formData[rule.name] || ''}
-            onChange={(e) => handleChange({ target: { value: e, name: rule.name } })}
+          // value={formData[rule.name] || ''}
+          // onChange={(e) => handleChange({ target: { value: e, name: rule.name } })}
           />
         );
       default:
@@ -152,7 +154,15 @@ const DynamicFor: React.FC<PropType> = ({ rules }) => {
             >
               {renderFormItem(subRule)}
             </Form.Item>
-            {subRule.control && renderControlledFields(subRule.control, form.getFieldValue(subRule.name))}
+            {/* {subRule.control && renderControlledFields(subRule.control, form.getFieldValue(subRule.name))} */}
+
+            {subRule.control && (
+              <Form.Item shouldUpdate noStyle>
+                {(renderForm) => {
+                  return renderControlledFields(subRule.control, renderForm.getFieldValue(subRule.name));
+                }}
+              </Form.Item>
+            )}
           </Fragment>
         ));
       }
@@ -171,7 +181,15 @@ const DynamicFor: React.FC<PropType> = ({ rules }) => {
           <Form.Item label={rule.label} name={rule.name} rules={[{ required: rule.required }]}>
             {renderFormItem(rule)}
           </Form.Item>
-          {rule.control && renderControlledFields(rule.control, form.getFieldValue(rule.name))}
+          {/* {rule.control && renderControlledFields(rule.control, form.getFieldValue(rule.name))} */}
+
+          {rule.control && (
+            <Form.Item shouldUpdate noStyle>
+              {(renderForm) => {
+                return renderControlledFields(rule.control, renderForm.getFieldValue(rule.name));
+              }}
+            </Form.Item>
+          )}
         </Fragment>
       );
     });
@@ -183,7 +201,20 @@ const DynamicFor: React.FC<PropType> = ({ rules }) => {
 
   return (
     <>
-      <Form form={form} labelCol={{ span: 5 }} wrapperCol={{ span: 18 }}>
+      <Form
+        preserve={false}
+        form={form}
+        labelCol={{ span: 5 }}
+        wrapperCol={{ span: 18 }}
+        onValuesChange={(changedValues) => {
+          // const name = Object.keys(changedValues)[0];
+          // const value = changedValues[name];
+          // setFormData({
+          //   ...formData,
+          //   [name]: value,
+          // });
+        }}
+      >
         {renderForm()}
         <Form.Item {...buttonItemLayout}>
           <Button type='primary' onClick={handleSubmit}>

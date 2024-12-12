@@ -5,9 +5,10 @@ import TagInput from './TagInput';
 import Lexical from './Lexical';
 import MyReactQuill from './react-quill';
 import Q10 from './Q10';
-import DynamicForm from './dynamic-form';
+// import DynamicForm from './dynamic-form';
 import MyTagInput from './user-modify';
 import Home from './home';
+import DynamicForm from './dynamic-form';
 
 function About() {
   return <h1>About</h1>;

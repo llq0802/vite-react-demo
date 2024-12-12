@@ -1,4 +1,3 @@
-import { Form } from 'antd';
 import FormWrapper, { FormItem } from './components/form-wrapper';
 import type { ControlType, RuleType } from './interface';
 import { Fragment, type FC } from 'react';

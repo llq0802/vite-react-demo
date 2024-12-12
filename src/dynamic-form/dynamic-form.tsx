@@ -1,5 +1,5 @@
 import { Form } from 'antd';
-import FormWrapper from './components/form-wrapper';
+import FormWrapper, { FormItem } from './components/form-wrapper';
 import type { ControlType, RuleType } from './interface';
 import { Fragment, type FC } from 'react';
 import FieldInput from './components/field-input';
@@ -33,9 +33,9 @@ const DynamicForm: FC<TypeProps> = ({ rules }) => {
         <Fragment key={rule.name}>
           {renderFormItem(rule)}
           {rule.control?.length > 0 && (
-            <Form.Item shouldUpdate noStyle>
+            <FormItem shouldUpdate noStyle>
               {(renderForm) => renderControlledFields(renderForm.getFieldValue(rule.name), rule.control)}
-            </Form.Item>
+            </FormItem>
           )}
         </Fragment>
       );

@@ -5,7 +5,7 @@ type Props = FormProps & {
   children?: React.ReactNode;
 };
 
-const FormItem = Form.Item;
+export const FormItem = Form.Item;
 const FormWrapper: React.FC<Props> = ({
   footer = (
     <FormItem label=' ' colon={false}>

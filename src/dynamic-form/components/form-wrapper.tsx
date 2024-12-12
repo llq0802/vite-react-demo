@@ -6,7 +6,6 @@ type Props = FormProps & {
 };
 
 const FormItem = Form.Item;
-
 const FormWrapper: React.FC<Props> = ({
   footer = (
     <FormItem label=' ' colon={false}>
@@ -24,8 +23,8 @@ const FormWrapper: React.FC<Props> = ({
       //   goodsType: 2,
       // }}
       preserve={false}
-      labelCol={{ span: 7 }}
-      wrapperCol={{ span: 17 }}
+      labelCol={{ span: 5 }}
+      wrapperCol={{ span: 18 }}
       autoComplete='off'
       validateMessages={{
         required: '${label} 是必填项',

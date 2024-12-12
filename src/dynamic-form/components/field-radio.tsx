@@ -1,6 +1,11 @@
-import { Form, Radio } from 'antd';
+import { Form, Radio, type FormItemProps, type GetProps } from 'antd';
 
-const FieldRadio = ({ radioProps, options, ...restProps }) => {
+type Props = {
+  radioProps: GetProps<typeof Radio.Group>;
+  options: Parameters<typeof Radio.Group>[0]['options'];
+} & FormItemProps;
+
+const FieldRadio: React.FC<Props> = ({ radioProps, options, ...restProps }) => {
   return (
     <Form.Item {...restProps}>
       <Radio.Group options={options} {...radioProps} />

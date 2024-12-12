@@ -1,9 +1,14 @@
+export type OptionType = {
+  label: string;
+  value: any;
+};
+
 export interface RuleType {
   name: string;
   label: string;
   type: string;
   required?: boolean;
-  options?: { label: string; value: any }[];
+  options?: OptionType[];
   control?: ControlType[];
   hidden?: boolean;
 }

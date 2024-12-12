@@ -14,41 +14,21 @@ type TypeProps = {
 };
 
 const DynamicForm: FC<TypeProps> = ({ rules }) => {
-  const [form] = Form.useForm();
-
-  const formItemDom = {
+  const formItemDomMap = {
     input: FieldInput,
     date: FieldDate,
     select: FieldSelect,
     password: FieldPassword,
     radio: FieldRadio,
-  };
+  } as const;
 
   const renderFormItem = (rule: RuleType) => {
     const { name, type, label, required, ...rest } = rule;
-    const FormItemComp = formItemDom[type];
+    const FormItemComp = formItemDomMap[type];
     return <FormItemComp name={name} label={label} rules={[{ required }]} options={rest.options} />;
   };
-
-  const renderControlledFields = (value: unknown, control: ControlType[]) => {
-    return control.map((ctrl: ControlType) => {
-      const isTrue = executeCondition(value, ctrl.condition, ctrl.value, ctrl);
-      if (isTrue) {
-        // ctrl.rule只能是 string[] 或者 RuleType[]
-        if (typeof ctrl.rule[0] === 'string') {
-          const rule: any = findValuesByKey(rules, ctrl.rule[0]);
-          if (ctrl.method === 'hidden') return null; //
-          return renderFormItem(rule);
-        }
-        return renderFormContent(ctrl.rule as RuleType[]);
-      }
-      // 包含metod 为 hidden 属性时，不渲染
-      return null;
-    });
-  };
-
   const renderFormContent = (schemaRules: RuleType[]) => {
-    return schemaRules.map((rule: RuleType, i) => {
+    return schemaRules.map((rule: RuleType) => {
       if (rule.hidden) return null;
       return (
         <Fragment key={rule.name}>
@@ -62,7 +42,25 @@ const DynamicForm: FC<TypeProps> = ({ rules }) => {
       );
     });
   };
-  return <FormWrapper form={form}>{renderFormContent(rules)}</FormWrapper>;
+
+  const renderControlledFields = (value: unknown, control: ControlType[]) => {
+    return control.map((ctrl: ControlType) => {
+      const isTrue = executeCondition(value, ctrl.condition, ctrl.value, ctrl);
+      if (isTrue) {
+        // ctrl.rule只能是 string[] 或者 RuleType[]
+        if (typeof ctrl.rule[0] === 'string') {
+          const rule: any = findValuesByKey(rules, ctrl.rule[0]);
+          if (ctrl.method === 'hidden') return null;
+          return renderFormItem(rule);
+        }
+        return renderFormContent(ctrl.rule as RuleType[]);
+      }
+      // 包含metod 为 hidden 属性时，不渲染
+      return null;
+    });
+  };
+
+  return <FormWrapper>{renderFormContent(rules)}</FormWrapper>;
 };
 
 export default DynamicForm;

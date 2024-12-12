@@ -3,18 +3,23 @@ export const executeCondition = (value: any, condition: string, targetValue: any
     return ctrl.handle(value);
   }
   switch (condition) {
-    case '==':
+    case '==': {
       return value === targetValue;
-    case 'between':
+    }
+    case 'between': {
       if (Array.isArray(targetValue) && targetValue.length === 2) {
         return value >= Number(targetValue[0]) && value <= Number(targetValue[1]);
       }
       return false;
-    case 'notBetween':
+    }
+
+    case 'notBetween': {
       if (Array.isArray(targetValue) && targetValue.length === 2) {
         return value < Number(targetValue[0]) || value > Number(targetValue[1]);
       }
       return false;
+    }
+
     default:
       return false;
   }

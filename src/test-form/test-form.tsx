@@ -21,6 +21,7 @@ const DynamicForm = () => {
     // console.log('curVal:', Object.keys(curVal)?.[0]);
     // console.log('allVal:', allVal);
   };
+
   return (
     <Form
       autoComplete='off'
@@ -33,41 +34,21 @@ const DynamicForm = () => {
       onFinish={onFinish}
       onValuesChange={onValuesChange}
     >
-      <Form.Item<FieldType> label='姓名' name='username' rules={[{ required: true }]}>
+      <Form.Item<FieldType> label='姓名' name={[0, 'username1']} rules={[{ required: true }]}>
         <Input placeholder='请输入' />
       </Form.Item>
 
-      <Form.Item<FieldType>
-        label='密码'
-        name='password'
-        // rules={[{ required: true, message: 'Please input your password!' }]}
-      >
+      <Form.Item<FieldType> label='密码' name={[0, 'password1']}>
         <Input.Password placeholder='请输入' />
       </Form.Item>
 
-      <Form.Item<FieldType>
-        name='date'
-        label='日期'
-        // rules={[{ required: true }]}
-      >
+      <Form.Item<FieldType> name={[2, 'date1']} label='日期'>
         <DatePicker placeholder='请选择' />
       </Form.Item>
 
-      <Form.Item<FieldType> name='remember' valuePropName='checked' label='同意'>
+      <Form.Item<FieldType> name={[3, 'remember1']} valuePropName='checked' label='同意'>
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
-
-      {/* <Form.Item label='测试' shouldUpdate>
-        {(form) => {
-          // console.log('===form===>', form);
-          // return (
-          //   <Form.Item<FieldType> name='other'>
-          //     <Input placeholder='请输入' />
-          //   </Form.Item>
-          // );
-          return <pre>{JSON.stringify(form.getFieldsValue(), null, 2)}</pre>;
-        }}
-      </Form.Item> */}
 
       <Form.Item label=' ' colon={false}>
         <Space>

@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import DynamicForm from './DynamicForm/index';
 import { RuleType } from './interface';
+import TestForm from './test-form';
 
 const rules: RuleType[] = [
   { name: 'goodsName', label: '商品名称', type: 'input', required: true },
@@ -118,7 +119,9 @@ const App = () => {
         width: '50%',
       }}
     >
-      <DynamicForm rules={rules} />
+      {/* <DynamicForm rules={rules} /> */}
+
+      <TestForm />
     </div>
   );
 };

@@ -1,18 +1,14 @@
 import { Flex } from 'antd';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import WebSocket from './WebSocket';
-import TagInput from './TagInput';
-import Lexical from './Lexical';
+import WebSocket from './web-socket';
+import TagInput from './tag-input';
+import Lexical from './lexical';
 import MyReactQuill from './react-quill';
-import Q10 from './Q10';
-// import DynamicForm from './dynamic-form';
+import TestForm from './test-form';
 import MyTagInput from './user-modify';
-import Home from './home';
 import DynamicForm from './dynamic-form';
+import Home from './home';
 
-function About() {
-  return <h1>About</h1>;
-}
 function App() {
   return (
     <BrowserRouter>
@@ -91,9 +87,8 @@ function App() {
       <Flex flex='1' vertical align='center' justify='center'>
         <Routes>
           {/* <Route path='/' element={<Home />} /> */}
-          {/* <Route path='/' element={<Q10 />} /> */}
           <Route path='/' element={<DynamicForm />} />
-          <Route path='/about' element={<About />} />
+          <Route path='/about' element={<TestForm />} />
           <Route path='/websocket' element={<WebSocket />} />
           <Route path='/tag-input' element={<TagInput />} />
           <Route path='/lexical' element={<Lexical />} />

@@ -1,9 +1,13 @@
-import { DatePicker, Form } from 'antd';
+import { Form, DatePicker, type FormItemProps, type GetProps } from 'antd';
 
-const FieldDate = ({ dateProps, ...restProps }) => {
+type Props = {
+  dateProps: GetProps<typeof DatePicker>;
+} & FormItemProps;
+
+const FieldDate: React.FC<Props> = ({ dateProps, ...restProps }) => {
   return (
     <Form.Item {...restProps}>
-      <DatePicker placeholder='请选择' {...dateProps} />
+      <DatePicker placeholder='请选择' style={{ width: '100%' }} {...dateProps} />
     </Form.Item>
   );
 };

@@ -89,6 +89,7 @@ const rules: RuleType[] = [
     control: [
       {
         handle(val: any) {
+          // 当前选择日期是否在今天之后
           return dayjs().isAfter(val);
         },
         rule: [{ name: 'remark', label: '备注', type: 'input', required: true }],

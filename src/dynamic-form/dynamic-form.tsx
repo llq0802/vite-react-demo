@@ -13,15 +13,14 @@ type TypeProps = {
   rules: RuleType[];
 };
 
+const formItemDomMap = {
+  input: FieldInput,
+  date: FieldDate,
+  select: FieldSelect,
+  password: FieldPassword,
+  radio: FieldRadio,
+} as const;
 const DynamicForm: FC<TypeProps> = ({ rules }) => {
-  const formItemDomMap = {
-    input: FieldInput,
-    date: FieldDate,
-    select: FieldSelect,
-    password: FieldPassword,
-    radio: FieldRadio,
-  } as const;
-
   const renderFormItem = (rule: RuleType) => {
     const { name, type, label, required, ...rest } = rule;
     const FormItemComp = formItemDomMap[type];

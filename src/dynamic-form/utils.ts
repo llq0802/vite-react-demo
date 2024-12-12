@@ -1,4 +1,13 @@
+/**
+ * 执行条件
+ * @param value
+ * @param condition
+ * @param targetValue
+ * @param ctrl
+ * @returns
+ */
 export const executeCondition = (value: any, condition: string, targetValue: any, ctrl: any): boolean => {
+  // 自定义函数执行优先级高
   if (typeof ctrl.handle === 'function') {
     return ctrl.handle(value);
   }

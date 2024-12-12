@@ -51,7 +51,7 @@ const DynamicForm: FC<TypeProps> = ({ rules }) => {
         if (typeof ctrl.rule[0] === 'string') {
           const rule: any = findValuesByKey(rules, ctrl.rule[0]);
           if (ctrl.method === 'hidden') return null;
-          return renderFormItem(rule);
+          return <Fragment key={rule.name}>{renderFormItem(rule)}</Fragment>;
         }
         return renderFormContent(ctrl.rule as RuleType[]);
       }

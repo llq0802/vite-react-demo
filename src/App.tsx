@@ -12,7 +12,7 @@ import Home from './home';
 function App() {
   return (
     <BrowserRouter>
-      <Flex gap={10} justify='center'>
+      <Flex gap={10} justify='center' style={{ marginBottom: 32 }}>
         <NavLink
           to='/'
           style={({ isActive }) => {
@@ -84,7 +84,7 @@ function App() {
           user-modify
         </NavLink>
       </Flex>
-      <Flex flex='1' vertical align='center' justify='center'>
+      <Flex flex='1' vertical align='center'>
         <Routes>
           {/* <Route path='/' element={<Home />} /> */}
           <Route path='/' element={<DynamicForm />} />

@@ -4,7 +4,7 @@ import rules from './schema-json';
 
 export default () => {
   return (
-    <Card style={{ width: '30%' }}>
+    <Card style={{ width: '30%', marginTop: '10%' }}>
       <DynamicDorm rules={rules} />
     </Card>
   );

@@ -1,12 +1,13 @@
 import { Button, Form, type FormProps } from 'antd';
+
+type Props = FormProps & {
+  footer?: React.ReactNode;
+  children?: React.ReactNode;
+};
+
 const FormItem = Form.Item;
 
-const FormWrapper: React.FC<
-  FormProps & {
-    footer?: React.ReactNode;
-    children?: React.ReactNode;
-  }
-> = ({
+const FormWrapper: React.FC<Props> = ({
   footer = (
     <FormItem label=' ' colon={false}>
       <Button type='primary' htmlType='submit' block>
@@ -22,6 +23,7 @@ const FormWrapper: React.FC<
       // initialValues={{
       //   goodsType: 2,
       // }}
+      preserve={false}
       labelCol={{ span: 7 }}
       wrapperCol={{ span: 17 }}
       autoComplete='off'

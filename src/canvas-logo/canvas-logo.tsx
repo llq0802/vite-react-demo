@@ -15,8 +15,6 @@ const CanvasLogo = () => {
     const dpr = window.devicePixelRatio || 1;
     canvas.width = (canvasStyle.width as number) * dpr;
     canvas.height = (canvasStyle.height as number) * dpr;
-    canvas.style.width = `${canvasStyle.width}px`;
-    canvas.style.height = `${canvasStyle.height}px`;
   };
   useMount(() => {
     const dpr = window.devicePixelRatio || 1;

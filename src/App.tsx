@@ -8,6 +8,7 @@ import TestForm from './test-form';
 import MyTagInput from './user-modify';
 import DynamicForm from './dynamic-form';
 import Home from './home';
+import CanvasLogo from './canvas-logo';
 
 function App() {
   return (
@@ -88,7 +89,7 @@ function App() {
         <Routes>
           {/* <Route path='/' element={<Home />} /> */}
           <Route path='/' element={<DynamicForm />} />
-          <Route path='/about' element={<TestForm />} />
+          <Route path='/about' element={<CanvasLogo />} />
           <Route path='/websocket' element={<WebSocket />} />
           <Route path='/tag-input' element={<TagInput />} />
           <Route path='/lexical' element={<Lexical />} />

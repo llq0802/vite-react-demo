@@ -8,11 +8,13 @@ import TagInput from './tag-input';
 import Lexical from './lexical';
 import MyReactQuill from './react-quill';
 import MyTagInput from './user-modify';
+import DragList from './drag-list';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
   { path: '/dynamic-form', element: <DynamicForm /> },
   { path: '/test-form', element: <TestForm /> },
+  { path: '/drag-list', element: <DragList /> },
   { path: '/about', element: <CanvasLogo /> },
   { path: '/websocket', element: <WebSocket /> },
   { path: '/tag-input', element: <TagInput /> },

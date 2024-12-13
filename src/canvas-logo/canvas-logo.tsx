@@ -39,7 +39,7 @@ const CanvasLogo = () => {
     // 右上角到左下角的对角线
     ctx.moveTo(topRight[0], topRight[1]);
     ctx.lineTo(bottomLeft[0], bottomLeft[1]);
-    // 4个方向的中心点围城的矩形
+    // 4个方向的中心点围城的矩形线
     ctx.moveTo(topCenter[0], topCenter[1]);
     ctx.lineTo(rightCenter[0], rightCenter[1]);
     ctx.lineTo(bottomCenter[0], bottomCenter[1]);

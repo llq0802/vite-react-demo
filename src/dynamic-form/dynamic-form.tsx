@@ -8,7 +8,7 @@ import FieldPassword from './components/field-password';
 import FieldRadio from './components/field-radio';
 import { executeCondition, findValuesByKey } from './utils';
 
-type TypeProps = {
+type PropsType = {
   rules: RuleType[];
 };
 
@@ -19,7 +19,7 @@ const formItemDomMap = {
   password: FieldPassword,
   radio: FieldRadio,
 } as const;
-const DynamicForm: FC<TypeProps> = ({ rules }) => {
+const DynamicForm: FC<PropsType> = ({ rules }) => {
   const renderFormItem = (rule: RuleType) => {
     const { name, type, label, required, ...rest } = rule;
     const FormItemComp = formItemDomMap[type];
@@ -32,6 +32,8 @@ const DynamicForm: FC<TypeProps> = ({ rules }) => {
         <Fragment key={rule.name}>
           {renderFormItem(rule)}
           {rule.control?.length > 0 && (
+            // 必须使用 shouldUpdate , 否则 form.getFieldValue(name) 获取不到最新的值
+            // #ref https://ant-design.antgroup.com/components/form-cn#shouldupdate
             <FormItem shouldUpdate noStyle>
               {(renderForm) => renderControlledFields(renderForm.getFieldValue(rule.name), rule.control)}
             </FormItem>
@@ -45,7 +47,7 @@ const DynamicForm: FC<TypeProps> = ({ rules }) => {
     return control.map((ctrl: ControlType) => {
       const isTrue = executeCondition(value, ctrl.condition, ctrl.value, ctrl);
       if (isTrue) {
-        // ctrl.rule只能是 string[] 或者 RuleType[]
+        // ctrl.rule只能是 string[] 或者 RuleType[] 不能是 (RuleType | string)[]
         if (typeof ctrl.rule[0] === 'string') {
           const rule: any = findValuesByKey(rules, ctrl.rule[0]);
           if (ctrl.method === 'hidden') return null;

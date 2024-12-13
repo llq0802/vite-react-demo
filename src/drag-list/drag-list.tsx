@@ -70,7 +70,6 @@ const DragList = () => {
               onDrop={(e) => {
                 e.preventDefault();
                 let data = e.dataTransfer.getData('key');
-                console.log('===data===>', data);
                 if (!data) return;
                 data = JSON.parse(data);
                 const currentType = key;

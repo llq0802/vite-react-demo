@@ -29,7 +29,7 @@ function App() {
           );
         })}
       </Flex>
-      <Flex flex='1' vertical align='center'>
+      <Flex flex='1' vertical align='center' justify='center'>
         <>{element}</>
       </Flex>
     </>

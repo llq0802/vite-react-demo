@@ -29,10 +29,6 @@ body,
   overflow-x: hidden;
 }
 
-#root {
-  gap: 16px;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

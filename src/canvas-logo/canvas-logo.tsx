@@ -29,7 +29,7 @@ const CanvasLogo = () => {
     const points = calculatePoints(centerX, centerY, gap);
     const { topLeft, topRight, bottomLeft, bottomRight, topCenter, bottomCenter, leftCenter, rightCenter } = points;
     ctx.strokeStyle = '#fff'; // 设置线条颜色
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = '#fff'; // 设置填充颜色
     ctx.lineWidth = 5 * dpr; // 设置线条宽度
     // 绘制对角线
     ctx.beginPath();

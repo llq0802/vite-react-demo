@@ -8,7 +8,11 @@ const canvasStyle: React.CSSProperties = {
   backgroundColor: '#c9282f',
 };
 
-const CanvasLogo = () => {
+const CanvasLogo = ({ count }) => {
+  const countRef = React.useRef(count);
+  const [innerCount, setInnerCount] = React.useState(() => count);
+  console.log('===innerCount===>', innerCount);
+  console.log('===countRef.current===>', countRef.current);
   const ref = React.useRef<HTMLCanvasElement>(null!);
   const initCanvas = () => {
     const canvas = ref.current;
@@ -64,6 +68,10 @@ const CanvasLogo = () => {
   return (
     <>
       <canvas ref={ref} style={canvasStyle} />
+
+      <br />
+
+      <h3>count: {count}</h3>
     </>
   );
 };

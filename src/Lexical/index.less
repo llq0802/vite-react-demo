@@ -1,3 +1,20 @@
-.my-editor {
-  width: 200px;
+.editor-wrapper {
+  width: 300px;
+  height: 100px;
+  position: relative;
+  outline: 1px solid red;
+
+  .editor-content {
+    padding: 8px;
+    inset: 0;
+    position: absolute;
+    z-index: 9;
+  }
+
+  .editor-placeholder {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    color: #c1c1c1;
+  }
 }

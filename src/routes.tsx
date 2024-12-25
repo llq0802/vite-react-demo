@@ -9,6 +9,7 @@ import Lexical from './lexical';
 import MyReactQuill from './react-quill';
 import MyTagInput from './user-modify';
 import DragList from './drag-list';
+import AutoAnimate from './auto-animate';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
@@ -21,6 +22,7 @@ const routes: RouteObject[] = [
   { path: '/lexical', element: <Lexical /> },
   { path: '/react-quill', element: <MyReactQuill /> },
   { path: '/user-modify', element: <MyTagInput /> },
+  { path: '/auto-animate', element: <AutoAnimate /> },
 ];
 
 export default routes;

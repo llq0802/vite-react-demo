@@ -129,6 +129,7 @@ export default () => {
     <div
       style={{
         width: 500,
+        height: '100%',
         margin: '0 auto',
       }}
     >

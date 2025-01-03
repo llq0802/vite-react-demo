@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import DynamicForm from './DynamicForm/index';
+import DynamicForm from './dynamic-form/index';
 import { RuleType } from './interface';
 import TestForm from './test-form';
 

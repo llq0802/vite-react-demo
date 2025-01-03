@@ -1,5 +1,5 @@
-import { useMemoizedFn, useMount } from 'ahooks';
-import { useRef, useState } from 'react';
+import { useMemoizedFn } from 'ahooks';
+import { useEffect, useRef, useState } from 'react';
 
 export default function useSelectionChange(readOnly = false) {
   const rangeObjRef = useRef<Range>();
@@ -19,12 +19,12 @@ export default function useSelectionChange(readOnly = false) {
     }
   });
 
-  useMount(() => {
+  useEffect(() => {
     document.addEventListener('selectionchange', selecthandler);
     return () => {
       document.removeEventListener('selectionchange', selecthandler);
     };
-  });
+  }, []);
 
   return {
     rangeObjRef,

@@ -10,6 +10,7 @@ import MyReactQuill from './react-quill';
 import MyTagInput from './user-modify';
 import DragList from './drag-list';
 import AutoAnimate from './auto-animate';
+import ReactTracked from './react-tracked';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
@@ -23,6 +24,7 @@ const routes: RouteObject[] = [
   { path: '/react-quill', element: <MyReactQuill /> },
   { path: '/user-modify', element: <MyTagInput /> },
   { path: '/auto-animate', element: <AutoAnimate /> },
+  { path: '/react-tracked', element: <ReactTracked /> },
 ];
 
 export default routes;

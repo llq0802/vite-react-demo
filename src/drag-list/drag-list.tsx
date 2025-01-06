@@ -47,7 +47,6 @@ const DragItem = ({ itemType, id }) => {
 
 const DragList = () => {
   const [dragData, setDragData] = useImmer(defaultDragData);
-
   return (
     <Flex gap={40}>
       {Object.keys(dragData).map((key, index) => {

@@ -8,13 +8,12 @@ const Box = () => {
   const increment = () => {
     setState((prev) => ({ ...prev, box: prev.box + 1 }));
   };
-  1112;
   return (
     <div>
       <Counter />
       <TextBox />
       <hr />
-      Box - {Math.random()}
+      Box - {Date.now()}
       <br />
       <>{state.box}</>
       <Button onClick={increment}>+1</Button>

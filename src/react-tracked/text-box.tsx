@@ -1,12 +1,12 @@
 import { Input } from 'antd';
 import { useSharedState } from './store';
+import { memo } from 'react';
 
 const TextBox = () => {
   const [state, setState] = useSharedState();
   const setText = (text) => {
     setState((prev) => ({ ...prev, text }));
   };
-  console.log('===TextBox===>');
   return (
     <div>
       TextBox - {Math.random()}
@@ -17,4 +17,4 @@ const TextBox = () => {
   );
 };
 
-export default TextBox;
+export default memo(TextBox);

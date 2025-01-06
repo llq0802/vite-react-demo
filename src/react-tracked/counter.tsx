@@ -1,12 +1,12 @@
 import { Button } from 'antd';
 import { useSharedState } from './store';
+import { memo } from 'react';
 
 const Counter = () => {
   const [state, setState] = useSharedState();
   const increment = () => {
     setState((prev) => ({ ...prev, count: prev.count + 1 }));
   };
-  console.log('===Counter===>');
 
   return (
     <div>
@@ -18,4 +18,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default memo(Counter);

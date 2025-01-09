@@ -8,6 +8,7 @@ const Box = () => {
   const increment = () => {
     setState((prev) => ({ ...prev, box: prev.box + 1 }));
   };
+
   return (
     <div>
       <Counter />

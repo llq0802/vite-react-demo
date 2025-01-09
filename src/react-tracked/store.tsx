@@ -19,7 +19,7 @@ const obj = {
 
 const pObj = new Proxy(obj, {});
 
-pObj.count = 2;
-console.log('===pObj.count===>', pObj.count);
-console.log('===obj===>', obj.count);
-console.log('===obj===>', obj === pObj);
+// pObj.count = 2;
+// console.log('===pObj.count===>', pObj.count);
+// console.log('===obj===>', obj.count);
+// console.log('===obj===>', obj === pObj);

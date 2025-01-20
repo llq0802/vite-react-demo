@@ -9,6 +9,7 @@
 }
 
 .container-text {
+  margin: 32px 0;
   position: relative;
   // height: 200px;
   border: 1px solid #000;
@@ -51,5 +52,31 @@
     z-index: 1;
     transform-origin: 0 0;
     animation: blink1 0.9s infinite; /* 1秒闪烁一次，无限循环 */
+  }
+}
+
+.contain-paint {
+  contain: paint; /* 子元素不会溢出 */
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+
+  .paint {
+    width: 300px; /* 超出容器宽度 */
+    height: 100px;
+    background-color: lightblue;
+  }
+}
+
+.contain-size {
+  contain: size; /* 子元素不影响容器尺寸 */
+  width: 300px;
+  height: 200px;
+  border: 1px solid #000;
+
+  .size {
+    width: 400px; /* 超出容器宽度 */
+    height: 300px; /* 超出容器高度 */
+    background-color: lightcoral;
   }
 }

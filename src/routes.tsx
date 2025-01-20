@@ -11,6 +11,7 @@ import MyTagInput from './user-modify';
 import DragList from './drag-list';
 import AutoAnimate from './auto-animate';
 import ReactTracked from './react-tracked';
+import TanstackReactVirtual from './tanstack-react-virtual';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
@@ -25,6 +26,7 @@ const routes: RouteObject[] = [
   { path: '/user-modify', element: <MyTagInput /> },
   { path: '/auto-animate', element: <AutoAnimate /> },
   { path: '/react-tracked', element: <ReactTracked /> },
+  { path: '/tanstack-react-virtual', element: <TanstackReactVirtual /> },
 ];
 
 export default routes;

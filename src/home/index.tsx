@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import { Flex, message } from 'antd';
 import React, { useRef, useState } from 'react';
 import { useInterval, useMount, useRequest, useUpdateEffect, useUpdateLayoutEffect } from 'ahooks';
 import { findLastTextNode, mockRequest } from './utils';
@@ -31,6 +31,7 @@ gsd gsd gsd个ds
 gsd gsd gsd个ds`;
 
 export default () => {
+  const ref: React.LegacyRef<HTMLDivElement> = useRef(null!);
   const [state, setState] = useState('');
   const { loading, runAsync } = useRequest(mockRequest, {
     manual: true,
@@ -75,55 +76,53 @@ export default () => {
     // return 2;
   };
 
-  const ref: React.LegacyRef<HTMLDivElement> = useRef(null!);
+  // const setCursor = () => {
+  //   const lastTextNode = findLastTextNode(ref.current!);
+  //   // const prev = document.querySelector('.cursor2');
+  //   // if (prev) {
+  //   //   prev.remove();
+  //   // }
+  //   // const dom = document.createElement('span');
+  //   // dom.className = 'cursor2';
+  //   // lastTextNode.parentElement?.appendChild(dom);
 
-  const setCursor = () => {
-    const lastTextNode = findLastTextNode(ref.current!);
-    // const prev = document.querySelector('.cursor2');
-    // if (prev) {
-    //   prev.remove();
-    // }
-    // const dom = document.createElement('span');
-    // dom.className = 'cursor2';
-    // lastTextNode.parentElement?.appendChild(dom);
+  //   const newText = document.createTextNode('|');
+  //   if (lastTextNode) {
+  //     lastTextNode.after(newText);
+  //   } else {
+  //     ref.current.appendChild(newText);
+  //   }
+  //   const range = document.createRange();
+  //   range.setStart(newText, 0);
+  //   range.setEnd(newText, 0);
+  //   const rect = range.getBoundingClientRect();
+  //   const containerRect = ref.current.getBoundingClientRect();
+  //   const x = rect.left - containerRect.left + 1;
+  //   const y = rect.top - containerRect.top;
+  //   const cursorDom = document.querySelector('.cursor') as HTMLElement;
+  //   cursorDom.style.transform = `translate(${x}px, ${y}px)`;
+  //   // cursorDom.style.left = x + 'px';
+  //   // cursorDom.style.top = y + 'px';
+  //   newText.remove();
+  // };
 
-    const newText = document.createTextNode('|');
-    if (lastTextNode) {
-      lastTextNode.after(newText);
-    } else {
-      ref.current.appendChild(newText);
-    }
-    const range = document.createRange();
-    range.setStart(newText, 0);
-    range.setEnd(newText, 0);
-    const rect = range.getBoundingClientRect();
-    const containerRect = ref.current.getBoundingClientRect();
-    const x = rect.left - containerRect.left + 1;
-    const y = rect.top - containerRect.top;
-    const cursorDom = document.querySelector('.cursor') as HTMLElement;
-    cursorDom.style.transform = `translate(${x}px, ${y}px)`;
-    // cursorDom.style.left = x + 'px';
-    // cursorDom.style.top = y + 'px';
-    newText.remove();
-  };
-
-  const [str, setStr] = useState('');
-  const preRef = useRef(null);
-  const index = useRef(0);
-  const clear = useInterval(() => {
-    preRef.current.innerHTML = '';
-    if (index.current === content.length - 1) {
-      clear();
-    }
-    const curStr = content[index.current];
-    setStr((str) => str + curStr);
-    index.current = index.current + 1;
-  }, 50);
-  useUpdateLayoutEffect(() => {
-    // ref.current.scrollTop = ref.current.scrollHeight - ref.current.clientHeight;
-    ref.current.clientHeight;
-    setCursor();
-  }, [str]);
+  // const [str, setStr] = useState('');
+  // const preRef = useRef(null);
+  // const index = useRef(0);
+  // const clear = useInterval(() => {
+  //   preRef.current.innerHTML = '';
+  //   if (index.current === content.length - 1) {
+  //     clear();
+  //   }
+  //   const curStr = content[index.current];
+  //   setStr((str) => str + curStr);
+  //   index.current = index.current + 1;
+  // }, 50);
+  // useUpdateLayoutEffect(() => {
+  //   // ref.current.scrollTop = ref.current.scrollHeight - ref.current.clientHeight;
+  //   ref.current.clientHeight;
+  //   setCursor();
+  // }, [str]);
 
   return (
     <div
@@ -156,9 +155,9 @@ export default () => {
 
       <div className='container-text' ref={ref}>
         <ul>
-          <pre ref={preRef} className='pre'>
+          {/* <pre ref={preRef} className='pre'>
             {str}
-          </pre>
+          </pre> */}
           {/* <li>Lorem ipsum dolor sit.</li>
           <li>Lorem.</li>
           <li>
@@ -171,8 +170,18 @@ export default () => {
           </li> */}
         </ul>
 
-        <div className='cursor'></div>
+        {/* <div className='cursor'></div> */}
       </div>
+
+      <Flex vertical gap={24}>
+        <div className='contain-paint'>
+          <div className='paint'></div>
+        </div>
+
+        <div className='contain-size'>
+          <div className='size'></div>
+        </div>
+      </Flex>
     </div>
   );
 };

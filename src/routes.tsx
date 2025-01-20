@@ -12,9 +12,11 @@ import DragList from './drag-list';
 import AutoAnimate from './auto-animate';
 import ReactTracked from './react-tracked';
 import TanstackReactVirtual from './tanstack-react-virtual';
+import MessageList from './message-list';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
+  { path: '/message-list', element: <MessageList /> },
   { path: '/dynamic-form', element: <DynamicForm /> },
   { path: '/test-form', element: <TestForm /> },
   { path: '/drag-list', element: <DragList /> },

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import fs from 'fs';
+import fs from 'node:fs';
 
 // https://vitejs.dev/config/
 export default defineConfig({

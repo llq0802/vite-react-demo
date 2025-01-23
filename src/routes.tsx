@@ -13,6 +13,7 @@ import AutoAnimate from './auto-animate';
 import ReactTracked from './react-tracked';
 import TanstackReactVirtual from './tanstack-react-virtual';
 import MessageList from './message-list';
+import InfiniteScroll from './infinite-scroll';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
@@ -29,6 +30,7 @@ const routes: RouteObject[] = [
   { path: '/auto-animate', element: <AutoAnimate /> },
   { path: '/react-tracked', element: <ReactTracked /> },
   { path: '/tanstack-react-virtual', element: <TanstackReactVirtual /> },
+  { path: '/infinite-scroll', element: <InfiniteScroll /> },
 ];
 
 export default routes;

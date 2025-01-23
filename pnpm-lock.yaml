@@ -18,8 +18,8 @@ importers:
         specifier: ^3.11.2
         version: 3.11.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ahooks:
-        specifier: ^3.8.0
-        version: 3.8.0(react@18.3.1)
+        specifier: latest
+        version: 3.8.4(react@18.3.1)
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
@@ -38,9 +38,6 @@ importers:
       lexical:
         specifier: ^0.19.0
         version: 0.19.0
-      localforage:
-        specifier: ^1.10.0
-        version: 1.10.0
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -144,10 +141,6 @@ packages:
     resolution: {integrity: sha512-EzlvzE6xQUBrZuuhSAFTdsr4P2bBBHGZwKFemEfq8gIGyIQCxalYfZW/T2ORbtQx5rU69o+WycP3exY/7T1hGA==}
     peerDependencies:
       react: '>=16.9.0'
-
-  '@babel/runtime@7.24.7':
-    resolution: {integrity: sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.25.0':
     resolution: {integrity: sha512-7dRy4DwXwtzBrPbZflqxnvfxLF8kdZXPkhymtDeFoFqE6ldzjQFgYTtYIFARcLEYDrqfBfYcZt1WqFxRoyC9Rw==}
@@ -803,8 +796,8 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  ahooks@3.8.0:
-    resolution: {integrity: sha512-M01m+mxLRNNeJ/PCT3Fom26UyreTj6oMqJBetUrJnK4VNI5j6eMA543Xxo53OBXn6XibA2FXKcCCgrT6YCTtKQ==}
+  ahooks@3.8.4:
+    resolution: {integrity: sha512-39wDEw2ZHvypaT14EpMMk4AzosHWt0z9bulY0BeDsvc9PqJEV+Kjh/4TZfftSsotBMq52iYIOFPd3PR56e0ZJg==}
     engines: {node: '>=8.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -891,8 +884,8 @@ packages:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
 
-  commander@13.0.0:
-    resolution: {integrity: sha512-oPYleIY8wmTVzkvQq10AEok6YcTC4sRUBl8F9gVuwchGVUCTbl/vhLTaQqutuuySYOsu8YTgV+OxKc/8Yvx+mQ==}
+  commander@13.1.0:
+    resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
     engines: {node: '>=18'}
 
   compute-scroll-into-view@3.1.0:
@@ -1164,9 +1157,6 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  immediate@3.0.6:
-    resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
-
   immer@10.1.1:
     resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
 
@@ -1225,8 +1215,9 @@ packages:
   isomorphic.js@0.2.5:
     resolution: {integrity: sha512-PIeMbHqMt4DnUP3MA/Flc0HElYjMXArsw1qwJZcm9sqR8mq3l8NYizFMty0pWwE/tzIGH3EKK5+jes5mAr85yw==}
 
-  js-cookie@2.2.1:
-    resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
+  js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -1266,12 +1257,6 @@ packages:
     resolution: {integrity: sha512-XteTiNO0qEXqqweWx+b21p/fBnNHUA1NwAtJNJek1oPrewEZs2uiT4gWivHKr9GqCjDPAhchz0UQO8NwU3bBNA==}
     engines: {node: '>=16'}
     hasBin: true
-
-  lie@3.1.1:
-    resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
-
-  localforage@1.10.0:
-    resolution: {integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==}
 
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
@@ -1989,10 +1974,6 @@ snapshots:
       resize-observer-polyfill: 1.5.1
       throttle-debounce: 5.0.2
 
-  '@babel/runtime@7.24.7':
-    dependencies:
-      regenerator-runtime: 0.14.1
-
   '@babel/runtime@7.25.0':
     dependencies:
       regenerator-runtime: 0.14.1
@@ -2627,12 +2608,12 @@ snapshots:
 
   acorn@8.12.0: {}
 
-  ahooks@3.8.0(react@18.3.1):
+  ahooks@3.8.4(react@18.3.1):
     dependencies:
-      '@babel/runtime': 7.24.7
+      '@babel/runtime': 7.25.0
       dayjs: 1.11.13
       intersection-observer: 0.12.2
-      js-cookie: 2.2.1
+      js-cookie: 3.0.5
       lodash: 4.17.21
       react: 18.3.1
       react-fast-compare: 3.2.2
@@ -2775,7 +2756,7 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
-  commander@13.0.0: {}
+  commander@13.1.0: {}
 
   compute-scroll-into-view@3.1.0: {}
 
@@ -3097,8 +3078,6 @@ snapshots:
   image-size@0.5.5:
     optional: true
 
-  immediate@3.0.6: {}
-
   immer@10.1.1: {}
 
   import-fresh@3.3.0:
@@ -3147,7 +3126,7 @@ snapshots:
 
   isomorphic.js@0.2.5: {}
 
-  js-cookie@2.2.1: {}
+  js-cookie@3.0.5: {}
 
   js-tokens@4.0.0: {}
 
@@ -3194,14 +3173,6 @@ snapshots:
     dependencies:
       isomorphic.js: 0.2.5
 
-  lie@3.1.1:
-    dependencies:
-      immediate: 3.0.6
-
-  localforage@1.10.0:
-    dependencies:
-      lie: 3.1.1
-
   locate-path@6.0.0:
     dependencies:
       p-locate: 5.0.0
@@ -3246,7 +3217,7 @@ snapshots:
 
   mockjs@1.1.0:
     dependencies:
-      commander: 13.0.0
+      commander: 13.1.0
 
   ms@2.1.2: {}
 

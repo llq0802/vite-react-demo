@@ -15,7 +15,7 @@
     "@lexical/react": "^0.19.0",
     "@tailwindcss/vite": "^4.0.12",
     "@tanstack/react-virtual": "^3.11.2",
-    "ahooks": "^3.8.0",
+    "ahooks": "latest",
     "animate.css": "^4.1.1",
     "antd": "latest",
     "axios": "^1.7.2",
@@ -44,6 +44,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "less": "^4.2.0",
+    "mockjs": "^1.1.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-mkcert": "^1.17.5"

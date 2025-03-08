@@ -6,7 +6,7 @@ function App() {
   const element = useRoutes(routes);
   return (
     <>
-      <Flex gap={10} justify='center' align='center' wrap>
+      <Flex gap={16} align='center' wrap>
         {routes.map(({ path }) => {
           return (
             <NavLink
@@ -14,13 +14,12 @@ function App() {
               to={path}
               style={({ isActive }) => {
                 return {
-                  boxSizing: 'content-box',
                   display: 'grid',
                   placeItems: 'center',
-                  padding: '4px 0',
-                  width: 150,
+                  minWidth: 100,
+                  height: 40,
                   backgroundColor: isActive ? 'lightblue' : 'white',
-                  fontWeight: isActive ? 'bold' : 'normal',
+                  padding: `0 10px`,
                 };
               }}
             >

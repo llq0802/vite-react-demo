@@ -1,6 +1,6 @@
-import { Flex, message } from 'antd';
+import { Button, Flex, Input, message } from 'antd';
 import React, { useRef, useState } from 'react';
-import { useInterval, useMount, useRequest, useUpdateEffect, useUpdateLayoutEffect } from 'ahooks';
+import { useInterval, useLatest, useMount, useRequest, useUpdateEffect, useUpdateLayoutEffect } from 'ahooks';
 import { findLastTextNode, mockRequest } from './utils';
 import './index.less';
 import { redirect } from 'react-router-dom';
@@ -47,8 +47,13 @@ export default () => {
   });
 
   const onClick = async () => {
-    await runAsync(state);
-    console.log('=== 成功 ===>');
+    try {
+      await runAsync(state);
+      console.log('=== 成功 ===>');
+    } catch (error) {
+      console.log('=== 失败 ===>');
+    }
+
     // setState('');
     // try {
     //   await runAsync(state);
@@ -124,23 +129,25 @@ export default () => {
   //   setCursor();
   // }, [str]);
 
+  const [count, setCount] = useState(0);
+  const countRef = useLatest(count);
+
   return (
     <div
       style={{
         width: 500,
         height: '100%',
-        margin: '0 auto',
+        margin: '16px auto',
       }}
     >
-      <input
+      <Input
         onChange={(e) => setState(e.target.value)}
         value={state}
         placeholder='Please enter username'
         style={{ width: 240, marginRight: 16 }}
       />
-      <button
+      <Button
         disabled={loading}
-        type='button'
         onClick={() => {
           const ret = onClick();
 
@@ -148,7 +155,7 @@ export default () => {
         }}
       >
         {loading ? 'Loading' : 'Edit'}
-      </button>
+      </Button>
 
       <hr />
       <br />
@@ -182,6 +189,18 @@ export default () => {
           <div className='size'></div>
         </div>
       </Flex>
+      <Button
+        type='primary'
+        onClick={async () => {
+          setCount(count + 1);
+          setTimeout(() => {
+            console.log('===countRef.current===>', countRef.current);
+            console.log('===requestAnimationFrame===>', count);
+          });
+        }}
+      >
+        测试 {count}
+      </Button>
     </div>
   );
 };

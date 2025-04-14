@@ -69,7 +69,8 @@ const App: React.FC = () => {
         }}
         label='Username'
         name='username'
-        // rules={[{ required: true, message: 'Please input your username!' }]}
+        rules={[{ required: true, message: 'Please input your username!' }]}
+        validateDebounce={200}
         // required
       >
         <Input />
@@ -152,3 +153,10 @@ export default App;
 // );
 
 // export default App;
+
+// function fn<T>(parameter:T) {
+//   return parameter
+// }
+// const test = <K extends unknown>(parameter: K): K => {
+//   return parameter;
+// }

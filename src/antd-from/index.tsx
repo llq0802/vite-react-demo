@@ -53,7 +53,7 @@ const App: React.FC = () => {
           flex: '0 0 100px',
         }}
         getValueFromEvent={(e) => {
-          // chushi
+          //从原生获取转化value
           console.log('===getValueFromEvent-1===>', e);
           return e.target.value;
         }}

@@ -140,25 +140,24 @@ export default () => {
         margin: '16px auto',
       }}
     >
-      <Input
-        onChange={(e) => setState(e.target.value)}
-        value={state}
-        placeholder='Please enter username'
-        style={{ width: 240, marginRight: 16 }}
-      />
-      <Button
-        disabled={loading}
-        onClick={() => {
-          const ret = onClick();
+      <Flex>
+        <Input
+          onChange={(e) => setState(e.target.value)}
+          value={state}
+          placeholder='Please enter username'
+          style={{ width: 240, marginRight: 16 }}
+        />
+        <Button
+          disabled={loading}
+          onClick={() => {
+            const ret = onClick();
 
-          console.log('===ret===>', ret);
-        }}
-      >
-        {loading ? 'Loading' : 'Edit'}
-      </Button>
-
-      <hr />
-      <br />
+            console.log('===ret===>', ret);
+          }}
+        >
+          {loading ? 'Loading' : 'Edit'}
+        </Button>
+      </Flex>
 
       <div className='container-text' ref={ref}>
         <ul>
@@ -189,18 +188,21 @@ export default () => {
           <div className='size'></div>
         </div>
       </Flex>
-      <Button
-        type='primary'
-        onClick={async () => {
-          setCount(count + 1);
-          setTimeout(() => {
-            console.log('===countRef.current===>', countRef.current);
-            console.log('===requestAnimationFrame===>', count);
-          });
-        }}
-      >
-        测试 {count}
-      </Button>
+
+      <Flex>
+        <Button
+          type='primary'
+          onClick={async () => {
+            setCount(count + 1);
+            setTimeout(() => {
+              console.log('===countRef.current===>', countRef.current);
+              console.log('===requestAnimationFrame===>', count);
+            });
+          }}
+        >
+          测试 {count}
+        </Button>
+      </Flex>
     </div>
   );
 };

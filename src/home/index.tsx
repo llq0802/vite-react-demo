@@ -4,6 +4,7 @@ import { useInterval, useLatest, useMount, useRequest, useUpdateEffect, useUpdat
 import { findLastTextNode, mockRequest } from './utils';
 import './index.less';
 import { redirect } from 'react-router-dom';
+import TestComponent from './test';
 
 const content = `lorem ipsum大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒
 啊实打实
@@ -189,19 +190,20 @@ export default () => {
         </div>
       </Flex>
 
-      <Flex>
+      <Flex vertical>
         <Button
           type='primary'
           onClick={async () => {
             setCount(count + 1);
             setTimeout(() => {
               console.log('===countRef.current===>', countRef.current);
-              console.log('===requestAnimationFrame===>', count);
             });
           }}
         >
           测试 {count}
         </Button>
+
+        <TestComponent></TestComponent>
       </Flex>
     </div>
   );

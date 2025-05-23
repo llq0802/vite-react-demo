@@ -11,7 +11,6 @@ const TextBox = () => {
     <div>
       TextBox - {Math.random()}
       <br />
-      {state.text}
       <Input value={state.text} onChange={(e) => setText(e.target.value)} />
     </div>
   );

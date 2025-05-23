@@ -1,7 +1,7 @@
 import Counter from './counter';
 import TextBox from './text-box';
 import { useSharedState } from './store';
-import { Button } from 'antd';
+import { Button, Divider } from 'antd';
 
 const Box = () => {
   const [state, setState] = useSharedState();
@@ -11,13 +11,13 @@ const Box = () => {
 
   return (
     <div>
+      <p>Box - {Date.now()}</p>
+      <p>{state.box}</p>
+      <Button onClick={increment}>Box+1</Button>
+      <Divider></Divider>
       <Counter />
+      <Divider></Divider>
       <TextBox />
-      <hr />
-      Box - {Date.now()}
-      <br />
-      <>{state.box}</>
-      <Button onClick={increment}>+1</Button>
     </div>
   );
 };

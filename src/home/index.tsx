@@ -3,7 +3,6 @@ import React, { useRef, useState } from 'react';
 import { useInterval, useLatest, useMount, useRequest, useUpdateEffect, useUpdateLayoutEffect } from 'ahooks';
 import { findLastTextNode, mockRequest } from './utils';
 import './index.less';
-import { redirect } from 'react-router-dom';
 import TestComponent from './test';
 
 const content = `lorem ipsum大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒
@@ -134,13 +133,7 @@ export default () => {
   const countRef = useLatest(count);
 
   return (
-    <div
-      style={{
-        width: 500,
-        height: '100%',
-        margin: '16px auto',
-      }}
-    >
+    <div className='w-full h-full p-8 mb-4 border-[1px] box-border'>
       <Flex>
         <Input
           onChange={(e) => setState(e.target.value)}

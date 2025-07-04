@@ -2,7 +2,6 @@ import { Button, Divider, Flex } from 'antd';
 import React, { FC, useState, useEffect } from 'react';
 import { useImmer } from 'use-immer';
 import { produce } from 'immer';
-import { mockRequest } from './utils';
 import { useRequest } from 'ahooks';
 
 const TestComponent: FC = () => {
@@ -22,31 +21,36 @@ const TestComponent: FC = () => {
     },
   ]);
   const handleClick = () => {
-    setCount((draft) => {
-      draft.count1 += 1;
+    setCount({
+      count1: 1,
+      count2: 2,
     });
     setCount((draft) => {
-      draft.count1 = 999;
+      draft.count1 += 1;
+      draft.count2 = 100;
     });
   };
 
+  console.log('render');
+
   const handleAdd = () => {
-    const ret1 = produce((draft) => {
+    const retFunc = produce((draft) => {
       draft.push({
         id: 'todo_' + Math.random(),
         title: 'A new todo',
         done: false,
       });
     });
-    const ret2 = produce(todos, (draft) => {
+    const retObj = produce(todos, (draft) => {
       draft.push({
         id: 'todo_' + Math.random(),
         title: 'A new todo',
         done: false,
       });
     });
-    console.log('===ret1===>', ret1);
-    setTodos(ret1);
+    console.log('===retFunc===>', retFunc);
+    console.log('===retObj===>', retObj);
+    setTodos(retFunc);
   };
 
   const { loading, run, data } = useRequest(
@@ -75,8 +79,8 @@ const TestComponent: FC = () => {
     <div className='w-full h-full'>
       <h1>测试组件</h1>
       <Divider />
-      <Button onClick={handleClick}>测试1</Button>
-      <Button onClick={handleAdd}>测试2</Button>
+      <Button onClick={handleClick}>use-immer测试</Button>
+      <Button onClick={handleAdd}>immer</Button>
       <p>count1: {counts.count1}</p>
       <p>count2: {counts.count2}</p>
       <p>todos: {todos.length}</p>
@@ -99,7 +103,6 @@ const TestComponent: FC = () => {
           测试 useRequest 1
         </Button>
       </Flex>
-      <p>data: {data}</p>
     </div>
   );
 };

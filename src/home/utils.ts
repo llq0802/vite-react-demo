@@ -24,13 +24,13 @@ export function findLastTextNode(container: HTMLElement): Text | null {
 
   return lastTextNode;
 }
-export function mockRequest(username: string): Promise<void> {
+export function mockRequest(): Promise<any> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (Math.random() > 0.5) {
-        resolve();
+        resolve('successed');
       } else {
-        reject(new Error('Failed to modify username'));
+        reject('failed');
       }
     }, 500);
   });

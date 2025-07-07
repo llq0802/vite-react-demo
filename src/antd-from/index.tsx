@@ -49,7 +49,7 @@ const App: React.FC = () => {
       //   console.log('===onFieldsChange===>', changedFields, allFields);
       // }}
     >
-      <Form.Item<FieldType>
+      {/* <Form.Item
         // noStyle
         // hidden
         // extra={111}
@@ -87,10 +87,11 @@ const App: React.FC = () => {
         <Input />
       </Form.Item>
 
-      <Form.Item<FieldType>
+      <Form.Item
+        required
         label='Password'
         name='password'
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        // rules={[{ required: true, message: 'Please input your password!' }]}
       >
         <Input.Password />
       </Form.Item>
@@ -99,6 +100,21 @@ const App: React.FC = () => {
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
+      <Form.Item label={null}>
+        <Button type='primary' htmlType='submit'>
+          Submit
+        </Button>
+      </Form.Item> */}
+
+      <Form.Item required name={['k', 0]}>
+        <Input />
+      </Form.Item>
+      <Form.Item required name={['k', '1']}>
+        <Input />
+      </Form.Item>
+      <Form.Item required name={[1, 'username2']}>
+        <Input />
+      </Form.Item>
       <Form.Item label={null}>
         <Button type='primary' htmlType='submit'>
           Submit

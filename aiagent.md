@@ -1,8 +1,8 @@
-# 前端在 AiAgent 项目中的实践分享
+# 前端在智能体项目中的实践分享
 
-### 项目架构与设计
+## 项目架构与设计
 
-基于 Monorepo 与前端微服务架构设计，主要由多个子应用和共享的模块组成
+基于 Pnpm + Monorepo 与前端微服务架构设计，主要由主应用、多个子应用和共享的模块组成
 
 ### 1. **多应用结构**
 
@@ -35,7 +35,7 @@
 
 - 使用了 `pnpm` 作为包管理器减少`幽灵依赖`
 - 使用了 `Turborepo`，来加速构建流程。
-- `scripts` 包含了一系列构建和部署脚本，例如打包、发布、同步标签等。
+- `scripts` 包含一系列构建和部署脚本，例如打包、发布、同步标签等。
 - 优化包体积与加载速度
 
 ### 4. **技术栈**
@@ -54,7 +54,7 @@
 - 主应用实现系统基础功能
 - 子应用实现业务功能
 - 踩坑点
-  - 内存占用大, 即便销毁子应用，某些内存不会自动释放
+- - 内存占用大, 即便销毁子应用，因为闭包的原因某些内存不会自动释放
   - 子应用中使用大部分的富文本编辑器有 bug
   - 子应用销毁时, 不会触发 useEffect 的 cleanup
 - 总结
@@ -64,9 +64,74 @@
 
 ---
 
-### 项目开发
+## 项目重点模块的实现
 
-流程说明：
+### SSE 技术
+
+Server-Sent Events（SSE） :是一种通过 HTTP 协议实现的服务器推送技术，也被称为 Server-Sent Events（SSE）
+
+EventSource：是 HTML5 中定义的用于接收服务器端推送事件的 API。 ( new EventSource(url) , 不符合业务需求没使用)
+
+SSE 本质是字节流的传输，fetch 中处理对应的字节流信息，同样可以实现 EventSource 的功能， fetch 的响应结果中，拿到的是一个 ReadableStream 类型，通过 ReadableStream.getReader().read()读取字节流，再将字节流转换成 string
+
+```js
+const createFetchSSE = (url) => {
+  const decoder = new TextDecoder();
+  const controller = new AbortController();
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({ query: 'hello' }),
+    signal: controller.signal,
+  }).then((res) => {
+    // 创建一个 ReadableStreamDefaultReader 去读取字节流数据
+    const reader = res.body.getReader();
+    const processHandle = ({ value }) => {
+      // value 为 Uint8Array 二进制数组
+      const decodeValue = decoder.decode(value, { stream: true });
+      // 业务代码
+      // ...
+
+      // 读取下一个流数据
+      return reader.read().then(processHandle);
+    };
+
+    reader.read().then(processHandle);
+  });
+};
+const sse = createFetchSSE('http://localhost:3000/sse');
+```
+
+```js
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/sse') {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      Connection: 'keep-alive', // 请求完成后依旧保持连接不关闭，不同http版本默认值不同
+      'Cache-Control': 'no-cache', // 不缓存
+    });
+    // 业务逻辑
+    res.write(`event: foo\n`); // 使用foo事件监听
+    res.write(`data: foo listener\n\n`);
+
+    res.write(`data: message listener\n\n`); // 未声明名称，默认使用message事件监听
+
+    res.write(`event: bar\n`); // 使用bar事件监听
+    res.write(`data: bar listener\n\n`);
+  }
+});
+
+server.listen(3000, 'localhost', () => {
+  console.log('Server is running at 3000');
+});
+```
+
+@microsoft/fetch-event-source
+
+- 连接遇到 http 错误时，如跨域等，必须要 throw 才能停止，不然会一直重连
+
+### Agent 对话流程的实现
 
 1. 初始化流程 ：
 
@@ -94,9 +159,21 @@
    - 使用策略模式处理不同类型的消息
    - 支持意图识别、API 调用、RAG 检索、BI 分析等多种能力
 
-### 资源的分享与推荐
+### 基于 Dify 工作流的开发
 
-ai 相关
+怎么做的？
+
+1. 先去看 Dify 的官方文档，了解 Dify 的工作流机制和 API 接口。
+2. 查看 reactflow 官方文档，了解 reactflow 的基本使用。
+3. 查看整体状态管理
+4. 直接复制官方代码，然后按照自己的需求进行修改。
+5. 遇到比较难理解的代码借助 AI
+
+基于 reactflow（@xy/flow）
+
+## 实践中的资源分享与推荐
+
+- AI 相关
 
 - dify
 - fastGPT
@@ -105,4 +182,11 @@ ai 相关
 
 其他
 
+- @microsoft/fetch-event-source
+- @xy/flow
+- lexical
+- quentank
 - SnapDOM
+- antv
+
+## 项目总结

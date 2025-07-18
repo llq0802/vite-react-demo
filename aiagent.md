@@ -44,8 +44,8 @@
 - **React**
 - **WuJie**
 - **Vite**
-- **UmiJS**
-- **Tailwind CSS**
+- **UmiJS** (RsBuild, Nextjs, Vite)
+- **Tailwind CSS** (antd-style)
 - **CSS Module**
 
 ### 5. **微前端架构**
@@ -68,7 +68,7 @@
 
 ### SSE 技术
 
-Server-Sent Events（SSE） :是一种通过 HTTP 协议实现的服务器推送技术，也被称为 Server-Sent Events（SSE）
+Server-Sent Events：是一种通过 HTTP 协议实现的服务器推送技术，也被称为 SSE
 
 EventSource：是 HTML5 中定义的用于接收服务器端推送事件的 API。 ( new EventSource(url) , 不符合业务需求没使用)
 
@@ -127,9 +127,9 @@ server.listen(3000, 'localhost', () => {
 });
 ```
 
-@microsoft/fetch-event-source
-
-- 连接遇到 http 错误时，如跨域等，必须要 throw 才能停止，不然会一直重连
+- @microsoft/fetch-event-source 的使用
+  - 必须满足 sse 的基本规范
+  - 连接遇到 http 错误时，如跨域等，必须要 throw 才能停止，不然会一直重连
 
 ### Agent 对话流程的实现
 
@@ -163,30 +163,34 @@ server.listen(3000, 'localhost', () => {
 
 怎么做的？
 
-1. 先去看 Dify 的官方文档，了解 Dify 的工作流机制和 API 接口。
+1. 先去看 Dify 的官方文档，了解 Dify 的工作流机制与节点介绍。
 2. 查看 reactflow 官方文档，了解 reactflow 的基本使用。
-3. 查看整体状态管理
+3. 查看工作流整体的状态管理, 阅读主线逻辑流程，不考虑细节。
 4. 直接复制官方代码，然后按照自己的需求进行修改。
 5. 遇到比较难理解的代码借助 AI
-
-基于 reactflow（@xy/flow）
 
 ## 实践中的资源分享与推荐
 
 - AI 相关
 
-- dify
-- fastGPT
-- ragflow
-- chatgpt-next-web
+  - Dify
+  - FastGPT
+  - RagFlow
+  - NextChat
 
-其他
+- 其他
 
-- @microsoft/fetch-event-source
-- @xy/flow
-- lexical
-- quentank
-- SnapDOM
-- antv
+  - ReactTracked
+  - immer
+  - @microsoft/fetch-event-source
+  - ReactFlow（@xyflow/react）
+  - Lexical
+  - TanStack 系列
+  - CherryMarkdown
 
 ## 项目总结
+
+1. 代码复用性仍还不够, 很多复制粘贴代码
+2. 组件与 hook 职责划分不够
+3. 组件与组件职责划分不够
+4. 前端太多的数据转换, 与后端沟通不不足

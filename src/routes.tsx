@@ -16,6 +16,7 @@ import MessageList from './message-list';
 import Tailwindcss from './tailwindcss';
 import InfiniteScroll from './infinite-scroll';
 import AntdFrom from './antd-from';
+import CodeEngine from './code-engine';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
@@ -35,6 +36,7 @@ const routes: RouteObject[] = [
   { path: '/tailwindcss', element: <Tailwindcss /> },
   { path: '/infinite-scroll', element: <InfiniteScroll /> },
   { path: '/antd-from', element: <AntdFrom /> },
+  { path: '/code-engine', element: <CodeEngine /> },
 ];
 
 export default routes;

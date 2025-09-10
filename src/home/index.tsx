@@ -4,6 +4,7 @@ import { useInterval, useLatest, useMount, useRequest, useUpdateEffect, useUpdat
 import { findLastTextNode, mockRequest } from './utils';
 import './index.less';
 import TestComponent from './test';
+import Cmp from './cmp';
 
 const content = `lorem ipsum大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒
 啊实打实
@@ -19,13 +20,13 @@ sg点过
 ds gsd个
 十多个
 df好
-dfsd gsddsdsgsd 
+dfsd gsddsdsgsd
 gs的g说的
-gsd gsd gsd个ds 
+gsd gsd gsd个ds
 十多个
-gd dsg说的gsd 
+gd dsg说的gsd
 gsd g说的
-gsd 
+gsd
 gsd gsd gsd个ds
 gsd gsd gsd个ds
 gsd gsd gsd个ds`;
@@ -197,6 +198,7 @@ export default () => {
         </Button>
 
         <TestComponent></TestComponent>
+        <Cmp></Cmp>
       </Flex>
     </div>
   );

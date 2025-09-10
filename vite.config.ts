@@ -21,4 +21,11 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    modules: {
+      generateScopedName() {
+        return '[name]__[local]__[hash:5]';
+      },
+    },
+  },
 });

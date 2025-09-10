@@ -51,6 +51,7 @@
     "sass": "^1.90.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
+    "vite-plugin-css-modules": "^0.0.1",
     "vite-plugin-mkcert": "^1.17.5"
   }
 }

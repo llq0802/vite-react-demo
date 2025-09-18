@@ -21,13 +21,16 @@ const TestComponent: FC = () => {
     },
   ]);
   const handleClick = () => {
-    setCount({
-      count1: 1,
-      count2: 2,
-    });
-    setCount((draft) => {
-      draft.count1 += 1;
-      draft.count2 = 100;
+    setTimeout(() => {
+      setCount({
+        count1: 1,
+        count2: 2,
+      });
+
+      setCount((draft) => {
+        draft.count1 = draft.count1 + 1;
+        draft.count2 = draft.count2 + 10;
+      });
     });
   };
 

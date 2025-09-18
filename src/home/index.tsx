@@ -146,14 +146,13 @@ export default () => {
           disabled={loading}
           onClick={() => {
             const ret = onClick();
-
             console.log('===ret===>', ret);
           }}
         >
           {loading ? 'Loading' : 'Edit'}
         </Button>
       </Flex>
-
+      <hr />
       <div className='container-text' ref={ref}>
         <ul>
           {/* <pre ref={preRef} className='pre'>
@@ -173,7 +172,7 @@ export default () => {
 
         {/* <div className='cursor'></div> */}
       </div>
-
+      <hr />
       <Flex vertical gap={24}>
         <div className='contain-paint'>
           <div className='paint'></div>
@@ -183,21 +182,31 @@ export default () => {
           <div className='size'></div>
         </div>
       </Flex>
-
+      <hr />
       <Flex vertical>
         <Button
           type='primary'
           onClick={async () => {
             setCount(count + 1);
+            requestAnimationFrame(() => {
+              console.log('===requestAnimationFrame-count===>', count);
+            });
+            requestAnimationFrame(() => {
+              console.log('===requestAnimationFrame-countRef.current===>', countRef.current);
+            });
             setTimeout(() => {
-              console.log('===countRef.current===>', countRef.current);
+              console.log('===setTimeout-count===>', count);
+            });
+            setTimeout(() => {
+              console.log('===setTimeout-countRef.current===>', countRef.current);
             });
           }}
         >
           测试 {count}
         </Button>
-
-        <TestComponent></TestComponent>
+        <hr />
+        <TestComponent />
+        <hr />
         <Cmp></Cmp>
       </Flex>
     </div>

@@ -7,11 +7,11 @@ import fs from 'node:fs';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    host: '0.0.0.0',
-    https: {
-      key: fs.readFileSync('certs/localhost+3-key.pem'),
-      cert: fs.readFileSync('certs/localhost+3.pem'),
-    },
+    // host: '0.0.0.0',
+    // https: {
+    //   key: fs.readFileSync('certs/localhost+3-key.pem'),
+    //   cert: fs.readFileSync('certs/localhost+3.pem'),
+    // },
     proxy: {
       '/api': {
         // 匹配所有以 '/api' 开头的请求
@@ -28,4 +28,5 @@ export default defineConfig({
       },
     },
   },
+  define: { 'process.env.NODE_ENV': '"production"' },
 });

@@ -17,6 +17,7 @@ import Tailwindcss from './tailwindcss';
 import InfiniteScroll from './infinite-scroll';
 import AntdFrom from './antd-from';
 import CodeEngine from './code-engine';
+import Penpal from './penpal';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
@@ -37,6 +38,7 @@ const routes: RouteObject[] = [
   { path: '/infinite-scroll', element: <InfiniteScroll /> },
   { path: '/antd-from', element: <AntdFrom /> },
   { path: '/code-engine', element: <CodeEngine /> },
+  { path: '/penpal', element: <Penpal /> },
 ];
 
 export default routes;

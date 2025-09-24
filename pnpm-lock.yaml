@@ -23,6 +23,9 @@ importers:
       '@tanstack/react-virtual':
         specifier: ^3.11.2
         version: 3.11.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@weblivion/react-penpal':
+        specifier: ^3.0.2
+        version: 3.0.2(react@18.3.1)
       ahooks:
         specifier: latest
         version: 3.8.4(react@18.3.1)
@@ -50,6 +53,9 @@ importers:
       mockjs:
         specifier: ^1.1.0
         version: 1.1.0
+      penpal:
+        specifier: ^7.0.4
+        version: 7.0.4
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -1239,6 +1245,11 @@ packages:
     peerDependencies:
       vite: ^4 || ^5
 
+  '@weblivion/react-penpal@3.0.2':
+    resolution: {integrity: sha512-veY/3m7yAqKhLDnKEL7NwPNP6klafeISzSFrzVNSC/foTPaboZ1UNd3Tp70dIl/E+TuRL5o/ZOXzuu51JguTvA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -2140,6 +2151,9 @@ packages:
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
+
+  penpal@7.0.4:
+    resolution: {integrity: sha512-O+M2V83oSaWQRDHghxYsq23TQgjAEzlrwemS0a1md16wZWqgOgmB35u4zluMwyqF6GnF/XT4v0N4QrrRgWAgSQ==}
 
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
@@ -4452,6 +4466,11 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
+  '@weblivion/react-penpal@3.0.2(react@18.3.1)':
+    dependencies:
+      penpal: 7.0.4
+      react: 18.3.1
+
   abbrev@2.0.0: {}
 
   acorn-jsx@5.3.2(acorn@8.12.0):
@@ -5436,6 +5455,8 @@ snapshots:
       minipass: 7.1.2
 
   path-type@4.0.0: {}
+
+  penpal@7.0.4: {}
 
   picocolors@1.0.1: {}
 

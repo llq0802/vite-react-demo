@@ -47,7 +47,7 @@ import type { Reply } from 'penpal';
 import { useEffect, useState } from 'react';
 
 type ParentMethods = {
-  hello(msg: string): Reply<string>;
+  onMessage(msg: string): Reply<string>;
 };
 
 function Penpal() {
@@ -55,8 +55,9 @@ function Penpal() {
   const { parentMethods, connection } = usePenpalParent<ParentMethods>(
     {
       methods: {
-        hi(message: string) {
+        onMessage(message: string) {
           setMessage(message);
+          return 'ok';
         },
       },
     },
@@ -64,8 +65,9 @@ function Penpal() {
   );
 
   useEffect(() => {
-    if (connection) {
-      // parentMethods.hello('Hello from usePenpalParent');
+    if (connection && parentMethods) {
+      console.log('===parentMethods==>', parentMethods);
+      parentMethods.onMessage('Hello 我是子页面');
     }
   }, [connection, parentMethods]);
 

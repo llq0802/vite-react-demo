@@ -1,12 +1,18 @@
+import { cn } from '../utils';
+import styles from './index.module.css';
 const Tailwindcss = () => {
+  const item = `flex justify-center items-center w-full h-full border`;
   return (
-    <div className='flex flex-col gap-2.5 w-full h-full mt-4  p-6 bg-gray-300'>
-      <button className='bg-sky-500 hover:bg-sky-700 p-3'>Save changes</button>
-      <div className='grid grid-cols-2 sm:grid-cols-3'>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+    <div className={styles.container}>
+      <div className="flex justify-center items-center gap-2">
+        <div className="bg-sky-500 hover:bg-sky-700 p-3">Save changes</div>
+        <div className=" w-1/2 h-full font-bold text-amber-400 text-base  bg-sky-500">测试</div>
+      </div>
+      <div className="h-full grid! grid-cols-2 sm:grid-cols-3 gap-2 ">
+        <div className={cn(item)}>1</div>
+        <div className={cn(item)}>2</div>
+        <div className={cn(item)}>3</div>
+        <div className={cn(item)}>4</div>
       </div>
     </div>
   );

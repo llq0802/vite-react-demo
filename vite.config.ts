@@ -1,17 +1,17 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react-swc';
 import fs from 'node:fs';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    // host: '0.0.0.0',
-    // https: {
-    //   key: fs.readFileSync('certs/localhost+3-key.pem'),
-    //   cert: fs.readFileSync('certs/localhost+3.pem'),
-    // },
+    host: '0.0.0.0',
+    https: {
+      key: fs.readFileSync('certs/localhost+3-key.pem'),
+      cert: fs.readFileSync('certs/localhost+3.pem'),
+    },
     proxy: {
       '/api': {
         // 匹配所有以 '/api' 开头的请求
@@ -22,11 +22,7 @@ export default defineConfig({
     },
   },
   css: {
-    modules: {
-      generateScopedName() {
-        return '[name]__[local]__[hash:5]';
-      },
-    },
+    modules: {},
   },
   define: { 'process.env.NODE_ENV': '"production"' },
 });

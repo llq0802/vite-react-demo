@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@reference "tailwindcss";
 
 /* @utility content-auto {
   content-visibility: auto;
@@ -24,16 +23,9 @@
 html,
 body,
 #root {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 100vw;
-  min-height: 100vh;
-  overflow-x: hidden;
-  font-size: 16px !important;
   /* font-size: 62.5% !important; */
   /* font-size: clamp(50px, 5.2083333333333336vw, 150px) !important; */
+  font-size: 16px !important;
 }
 /*
 @media (prefers-color-scheme: light) {

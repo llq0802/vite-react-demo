@@ -1,5 +1,4 @@
-@reference "tailwindcss";
 .container {
-  @apply flex flex-col gap-2 w-full h-full mt-4  p-6 bg-gray-300;
+  @apply mt-4 flex h-full w-full flex-col gap-2 bg-gray-300 p-6;
   text-align: center;
 }

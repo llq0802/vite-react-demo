@@ -27,7 +27,7 @@ body,
 #root {
   /* font-size: 62.5% !important; */
   /* font-size: clamp(50px, 5.2083333333333336vw, 150px) !important; */
-  font-size: 16px !important;
+  /* font-size: 16px; */
 }
 /*
 @media (prefers-color-scheme: light) {

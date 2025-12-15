@@ -1,5 +1,6 @@
 @reference "tailwindcss";
 
 .container {
-  @apply flex h-full w-full flex-col gap-2 leading-[1.55];
+  @apply flex h-full w-full flex-col gap-2 bg-cyan-500 leading-[1.55];
+  /* height: 300px; */
 }

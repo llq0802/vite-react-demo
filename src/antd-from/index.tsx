@@ -1,7 +1,7 @@
-import React from 'react';
+import { useMount } from 'ahooks';
 import type { FormProps } from 'antd';
 import { Button, Form, Input, Space } from 'antd';
-import { useMount } from 'ahooks';
+import React from 'react';
 
 type FieldType = {
   username?: string;
@@ -26,10 +26,10 @@ const App: React.FC = () => {
   });
   return (
     <Form<FieldType>
-      rootClassName='asdasd'
+      rootClassName="asdasd"
       form={form}
-      name='basic-123'
-      autoComplete='off'
+      name="basic-123"
+      autoComplete="off"
       style={{ width: '50%', outline: '1px solid red' }}
       initialValues={{
         remember: true,
@@ -109,10 +109,10 @@ const App: React.FC = () => {
       </Form.Item>
       <Form.Item label={null}>
         <Space>
-          <Button type='primary' htmlType='reset'>
+          <Button type="primary" htmlType="reset">
             Reset
           </Button>
-          <Button type='primary' htmlType='submit'>
+          <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Space>

@@ -1,4 +1,5 @@
 import { cn } from '../utils';
+import Test1 from './components/test1';
 import styles from './index.module.css';
 
 const Tailwindcss = () => {
@@ -26,6 +27,8 @@ const Tailwindcss = () => {
           </div>
         ))}
       </div>
+
+      <Test1 />
     </div>
   );
 };

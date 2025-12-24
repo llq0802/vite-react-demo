@@ -4,6 +4,7 @@ module.exports = {
     'prettier-plugin-organize-imports',
     'prettier-plugin-tailwindcss',
   ],
+  "endOfLine":"lf",
   printWidth: 120,
   proseWrap: 'never',
   singleQuote: true,

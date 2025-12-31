@@ -2,13 +2,10 @@
 
 @import 'tailwindcss';
 
-/* @utility content-auto {
-  content-visibility: auto;
-}
-@utility center {
-  align-items: center;
-  justify-content: center;
-  display: flex;
+/* @utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
 } */
 
 @layer utilities {
@@ -23,9 +20,14 @@
   .flex-1 {
     flex: 1 1 0;
   }
+  .scrollbar-hidden {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
-:root {
+:root:root {
   /* font-size: 62.5% !important; */
   /* font-size: clamp(50px, 5.2083333333333336vw, 150px) !important; */
   /* font-size: 16px; */

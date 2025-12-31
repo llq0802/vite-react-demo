@@ -3,4 +3,5 @@
 .container {
   @apply flex w-1/3 flex-col gap-3;
   min-width: 200px;
+  --custom-color: yellow;
 }

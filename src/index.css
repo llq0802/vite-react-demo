@@ -12,6 +12,10 @@
   .content-auto {
     content-visibility: auto;
   }
+  .grid-center {
+    display: grid;
+    place-items: center;
+  }
   .flex-center {
     display: flex;
     align-items: center;

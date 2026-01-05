@@ -22,9 +22,9 @@ const Tailwindcss = () => {
 
       <div
         data-grid-layout
-        className="relative grid! h-0 min-h-0 flex-1 grid-cols-2 content-start gap-2 overflow-y-auto border-4 border-amber-800 sm:grid-cols-3"
+        className="scrollbar-hidden relative grid! h-0 min-h-0 flex-1 grid-cols-2 content-start gap-2 overflow-y-auto border-4 border-amber-800 sm:grid-cols-3"
       >
-        {new Array(5).fill(0).map((_, i) => (
+        {new Array(50).fill(0).map((_, i) => (
           <div key={i} className={cn(itemClass)}>
             {i + 1}
           </div>

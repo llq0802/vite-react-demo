@@ -1,0 +1,23 @@
+.scrollContainer {
+  width: 100%;
+  scrollbar-width: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  // position: relative;
+  white-space: pre-wrap;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  &::--webkit-scrollbar {
+    width: 0;
+  }
+  .container {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: max-content;
+  }
+  .realContent {
+  }
+}

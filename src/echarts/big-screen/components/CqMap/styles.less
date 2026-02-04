@@ -1,0 +1,134 @@
+.mapBox {
+  // position: absolute;
+  // top: 0.8rem;
+  // right: 2rem;
+  // bottom: 0.3rem;
+  // left: 2rem;
+  // z-index: 6;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  .cqMapWrapper {
+    position: absolute;
+    top: 2.8%;
+    left: 14.9%;
+    width: 70.55%;
+    height: 85.99%;
+    z-index: 3;
+  }
+  .mainCqMapBox {
+    position: absolute;
+    // top: 2.2%;
+    // left: 19.5%;
+    // height: 35.9%;
+    // width: 15%;
+    top: -1.3%;
+    left: 16.5%;
+    height: 42.9%;
+    width: 24%;
+    z-index: 4;
+  }
+}
+
+.whereBox {
+  position: absolute;
+  bottom: -0.3rem;
+  left: 50%;
+  z-index: 1;
+
+  transform: translateX(-50%);
+
+  .type {
+    height: 0.3rem;
+    cursor: pointer;
+    img {
+      height: 0.3rem;
+    }
+  }
+}
+
+.mapBg {
+  position: absolute;
+  top: 2%;
+  left: 8%;
+  width: 84%;
+  height: 105%;
+  z-index: 1;
+}
+
+.cqMainMapBg {
+  position: absolute;
+  top: -7%;
+  left: 14%;
+  width: 33%;
+  height: 64%;
+  z-index: 1;
+}
+.mapBgBox {
+  position: absolute;
+  background: url('@/assets/imgs/home/map_bg.png') no-repeat center center;
+  background-size: 100% 100%;
+  top: 5%;
+  left: 15%;
+  width: 74%;
+  height: 89%;
+  z-index: 0;
+}
+
+.totalBox {
+  position: absolute;
+  bottom: 0.46rem;
+  right: 0.39rem;
+  width: 1.66rem;
+  height: 1.22rem;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.12rem;
+  background: url('@/assets/imgs/home/total_bg.png') no-repeat center center;
+  background-size: 100% 100%;
+
+  .totalTitle {
+    text-shadow: 0 1.2px 1.2px rgba(30, 116, 223, 0.8);
+    font-size: 0.18rem;
+    font-weight: 600;
+    background: linear-gradient(0deg, #7ccdff 0%, #fff 53%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .total {
+    display: flex;
+
+    .totalNum {
+      color: #ffc97a;
+      text-shadow: 0 1.2px 1.2px rgba(30, 116, 223, 0.8);
+      font-size: 0.4rem;
+      font-weight: 700;
+    }
+    .unit {
+      color: #fff;
+      font-size: 0.12rem;
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+  }
+}
+
+.tooltip_box {
+  background: linear-gradient(90deg, #2993f7, #2c99ff85);
+  padding: 0.13rem 0.1rem;
+  border-radius: 0.04rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.12rem;
+  box-shadow: 0 0.02rem 0.08rem rgba(0, 0, 0, 0.2);
+}

@@ -17,6 +17,7 @@ export default defineConfig({
       '/api': {
         target: 'http://136.29.0.0:7878', // 目标服务器的基础路径
         changeOrigin: true, // 是否改变请求源头，通常为 true
+        secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''), // 可选，重写请求路径
       },
     },
@@ -24,5 +25,5 @@ export default defineConfig({
   css: {
     modules: {},
   },
-  define: { 'process.env.NODE_ENV': '"production"' },
+  define: { foo: '"foo"' },
 });

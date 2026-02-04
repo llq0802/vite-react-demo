@@ -1,0 +1,88 @@
+.airQuality {
+  width: 0;
+  height: 100%;
+  flex: 1;
+  background-image: url(./assets/top-center-bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0.18rem 0.11rem;
+  box-sizing: border-box;
+  .title {
+    background-image: url(../../assets/icons/icon-small-title.svg);
+    background-repeat: no-repeat;
+    background-size: 0.2rem 0.2rem;
+    width: 100%;
+    height: 0.2rem;
+    padding-left: 0.2rem;
+    font-size: 0.14rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.14rem;
+  }
+  .realtimeAirQuality {
+    display: flex;
+    margin-bottom: 0.14rem;
+    .realtimeAirItem {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.2rem;
+      .mount {
+        width: max-content;
+        height: 0.24rem;
+        background-color: #0bd407;
+        font-size: 0.14rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        padding: 0 0.1rem;
+        margin-left: 0.02rem;
+      }
+    }
+  }
+  .predict {
+    display: flex;
+    gap: 0.02rem;
+    height: 1.08rem;
+    .predictTypes {
+      width: 0.38rem;
+      height: 100%;
+      background: linear-gradient(180deg, #154776 0%, #357faa 30%, #357faa 70%, #154776 100%);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      justify-content: center;
+      .predictTypeItem {
+        font-size: 0.1rem;
+      }
+    }
+    .predictItem {
+      flex: 1;
+      text-align: center;
+      background: linear-gradient(180deg, #154776 0%, #357faa 30%, #357faa 70%, #154776 100%);
+      padding: 0.04rem;
+      .weekday {
+        font-size: 0.1rem;
+        line-height: 0.12rem;
+        margin-bottom: 0.06rem;
+      }
+      .quality {
+        background: #e5fa1c;
+        height: 0.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.14rem;
+        color: #757900;
+        border-radius: 0.04rem;
+        margin-bottom: 0.06rem;
+      }
+      .predictType {
+        font-weight: bold;
+        font-size: 0.2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+.topData {
+  width: 100%;
+  height: 1.92rem;
+  margin-top: 0.41rem;
+  .typeCard {
+    width: 0.6rem;
+    height: 0.78rem;
+    background: url(../../assets/data_type_rect_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    font-size: 0.14rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 0.12rem;
+    text-align: center;
+    line-height: 0.2rem;
+  }
+  .protect {
+    width: 100%;
+    height: 0.88rem;
+    display: flex;
+    align-items: center;
+    .protectDataList {
+      width: 0;
+      height: 100%;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      .splitLine {
+        width: 0.42rem;
+        height: 0.02rem;
+        background: linear-gradient(
+          90deg,
+          rgba(26, 31, 54, 0) 0%,
+          #008cff 29.81%,
+          #008cff 70%,
+          rgba(26, 31, 54, 0) 100%
+        );
+      }
+      .dataItem {
+        width: 0.77rem;
+        height: 0.88rem;
+        background-image: url(./assets/data_bg.png);
+        background-size: 0.77rem 0.88rem;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .typeName {
+          height: 0.16rem;
+          font-size: 0.12rem;
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: center;
+          width: max-content;
+        }
+        .value {
+          font-size: 0.28rem;
+          height: 0.28rem;
+          line-height: 1;
+          color: #16f7b3;
+          margin-top: 0.06rem;
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: center;
+          width: max-content;
+          font-weight: bold;
+          .unit {
+            font-size: 0.12rem;
+            position: relative;
+            top: 0.06rem;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+  .monitor {
+    width: 100%;
+    height: 0.78rem;
+    display: flex;
+    margin-top: 0.35rem;
+    .monitorDataList {
+      margin-left: 0.12rem;
+      box-sizing: border-box;
+      width: 0;
+      flex: 1;
+      height: 0.78rem;
+      background-image: url(./assets/monitor_bg.png);
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      position: relative;
+      z-index: 0;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 1.5rem;
+        background-image: url(./assets/monitor_bg_light.png);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position-y: -0.27rem;
+        pointer-events: none;
+      }
+      .dataList {
+        display: flex;
+        height: 0.66rem;
+        .dataItem {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          &::after {
+            position: absolute;
+            right: 0;
+            width: 1px;
+            height: 0.28rem;
+            border-right: 0.01rem dashed #7be5ff;
+            display: block;
+            content: '';
+          }
+          &.noborder::after {
+            border-right: none;
+          }
+          .mount {
+            font-size: 0.26rem;
+            font-weight: bold;
+            color: #06ffff;
+            .unit {
+              font-size: 0.12rem;
+              font-weight: 400;
+              color: #ffffff;
+            }
+          }
+          .name {
+            line-height: 0.14rem;
+            font-size: 0.12rem;
+          }
+        }
+      }
+    }
+  }
+}

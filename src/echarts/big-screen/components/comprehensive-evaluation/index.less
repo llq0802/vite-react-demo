@@ -1,0 +1,83 @@
+.comprehensiveEvaluation {
+  width: 100%;
+  height: 3.05rem;
+  .typeList {
+    width: 100%;
+    display: flex;
+    gap: 0.06rem;
+    .typeItem {
+      padding: 0 0.08rem;
+      border-radius: 0.02rem;
+      width: max-content;
+      box-sizing: border-box;
+      display: flex;
+      height: 0.24rem;
+      align-items: center;
+      cursor: pointer;
+      border: 0.01rem solid #0099ff;
+      background: #aebdd114;
+      &:hover,
+      &.active {
+        background: #0099ff;
+        color: #28f1fa;
+        border-color: #0099ff;
+      }
+    }
+  }
+  .contanier {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.19rem;
+    height: calc(100% - 0.2rem);
+    .blueTypeList {
+      width: 100%;
+      display: flex;
+      gap: 0.06rem;
+      margin-top: 0.08rem;
+      justify-content: right;
+      .typeItem {
+        padding: 0 0.08rem;
+        border-radius: 0.04rem;
+        width: max-content;
+        box-sizing: border-box;
+        display: flex;
+        height: 0.26rem;
+        align-items: center;
+        cursor: pointer;
+        border: 0.01rem solid #0099ff;
+        &:hover,
+        &.active {
+          background: #0099ff;
+          color: #ffffff;
+        }
+      }
+    }
+    .evaluation {
+      width: 100%;
+      height: 0;
+      flex: 1;
+      display: flex;
+      font-size: 0.16rem;
+      line-height: 0.24rem;
+      margin-top: 0.14rem;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+      .autoWrap {
+        white-space: pre-wrap;
+      }
+    }
+    .bottom {
+      width: 100%;
+      display: flex;
+      justify-content: right;
+      height: 0.15rem;
+      margin-top: 0.14rem;
+      .downloadBtn {
+        cursor: pointer;
+      }
+    }
+  }
+}

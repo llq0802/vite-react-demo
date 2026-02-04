@@ -1,23 +1,24 @@
 import { RouteObject } from 'react-router-dom';
-import Home from './home';
-import DynamicForm from './dynamic-form';
-import TestForm from './test-form';
-import CanvasLogo from './canvas-logo';
-import WebSocket from './web-socket';
-import TagInput from './tag-input';
-import Lexical from './lexical';
-import MyReactQuill from './react-quill';
-import MyTagInput from './user-modify';
-import DragList from './drag-list';
-import AutoAnimate from './auto-animate';
-import ReactTracked from './react-tracked';
-import TanstackReactVirtual from './tanstack-react-virtual';
-import MessageList from './message-list';
-import Tailwindcss from './tailwindcss';
-import InfiniteScroll from './infinite-scroll';
 import AntdFrom from './antd-from';
+import AutoAnimate from './auto-animate';
+import CanvasLogo from './canvas-logo';
 import CodeEngine from './code-engine';
+import DragList from './drag-list';
+import DynamicForm from './dynamic-form';
+import Echarts from './echarts';
+import Home from './home';
+import InfiniteScroll from './infinite-scroll';
+import Lexical from './lexical';
+import MessageList from './message-list';
 import Penpal from './penpal';
+import MyReactQuill from './react-quill';
+import ReactTracked from './react-tracked';
+import TagInput from './tag-input';
+import Tailwindcss from './tailwindcss';
+import TanstackReactVirtual from './tanstack-react-virtual';
+import TestForm from './test-form';
+import MyTagInput from './user-modify';
+import WebSocket from './web-socket';
 
 const routes: RouteObject[] = [
   { path: '/', element: <Home /> },
@@ -39,6 +40,7 @@ const routes: RouteObject[] = [
   { path: '/antd-from', element: <AntdFrom /> },
   { path: '/code-engine', element: <CodeEngine /> },
   { path: '/penpal', element: <Penpal /> },
+  { path: '/echarts', element: <Echarts /> },
 ];
 
 export default routes;

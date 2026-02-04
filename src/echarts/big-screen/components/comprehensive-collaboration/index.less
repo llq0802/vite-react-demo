@@ -1,0 +1,152 @@
+.comprehensiveCollaboration {
+  width: 100%;
+  height: 1.19rem;
+  background-image: url(./assets/bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: flex;
+  padding: 0.17rem 0.2rem;
+  .typeCard {
+    width: 0.6rem;
+    height: 0.78rem;
+    background: url(../../assets/data_type_rect_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    font-size: 0.14rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 0.12rem;
+    text-align: center;
+    line-height: 0.2rem;
+  }
+  .dataList {
+    width: 0;
+    height: 0;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0 0.17rem;
+    .carouselPanel {
+      width: 100%;
+      height: 0.92rem;
+      color: #fff;
+      overflow: hidden;
+      .panelContainer {
+        display: flex;
+        width: fit-content;
+        height: 100%;
+        justify-content: left;
+        .panelItem {
+          width: 3.1rem;
+          flex: 1;
+          display: flex;
+          justify-content: left;
+          padding-top: 0.15rem;
+          .distributed {
+            width: 0.53rem;
+            height: 0.45rem;
+            background-image: url(./assets/distributed.png);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+          }
+          .rightData {
+            width: 0;
+            flex: 1;
+            margin-left: 0.12rem;
+            .topData {
+              height: 0.26rem;
+              display: flex;
+              align-items: center;
+              .value {
+                font-size: 0.2rem;
+                font-weight: bold;
+                color: #16f7b3;
+              }
+              .split {
+                font-size: 0.12rem;
+                margin: 0 0.04rem;
+              }
+              .process {
+                font-size: 0.2rem;
+                font-weight: bold;
+                color: #3dffff;
+              }
+              .mark {
+                font-size: 0.12rem;
+                margin-left: 0.04rem;
+              }
+            }
+            .name {
+              font-size: 0.16rem;
+              font-weight: bold;
+              background: linear-gradient(0deg, #7ccdff 0%, #ffffff 53%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              height: 0.22rem;
+              line-height: 0.22rem;
+            }
+          }
+          .typeTitle {
+            width: 2.02rem;
+            height: 0.29rem;
+            background-image: url(./assets/collaboration_bg.png);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position-y: 0.11rem;
+            font-size: 0.16rem;
+            display: flex;
+            &::before {
+              width: 0.555rem;
+              height: 0.6rem;
+              content: '';
+              display: block;
+              background-image: url(./assets/type_icon.png);
+              background-repeat: no-repeat;
+              background-size: 100% auto;
+              position: relative;
+              top: -0.2rem;
+              left: -0.1rem;
+            }
+            .title {
+              position: relative;
+              left: -0.2rem;
+              font-size: 0.16rem;
+            }
+          }
+          .bottomData {
+            display: flex;
+            margin-top: 0.07rem;
+
+            .processIcon {
+              width: 0.53rem;
+              height: 0.45rem;
+              background-image: url(./assets/processing.png);
+              background-repeat: no-repeat;
+              background-size: 100% auto;
+            }
+            .dataContainer {
+              margin: 0 0.12rem;
+              .dataType {
+                font-size: 0.16rem;
+                background: linear-gradient(0deg, #7ccdff 0%, #ffffff 53%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: bold;
+              }
+              .dataValue {
+                font-size: 0.22rem;
+                font-weight: bold;
+                height: 0.31rem;
+                line-height: 0.31rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

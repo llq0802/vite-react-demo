@@ -1,0 +1,196 @@
+.waterQuality {
+  width: 3.6rem;
+  height: 100%;
+  background-image: url(./assets/top-left-bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0.18rem 0.14rem;
+  box-sizing: border-box;
+  .title {
+    background-image: url(../../assets/icons/icon-small-title.svg);
+    background-repeat: no-repeat;
+    background-size: 0.2rem 0.2rem;
+    width: 100%;
+    height: 0.2rem;
+    padding-left: 0.2rem;
+    font-size: 0.14rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.02rem;
+  }
+  .qualityItems {
+    display: flex;
+    gap: 0.04rem;
+    margin-bottom: 0.02rem;
+    .qualityItem {
+      flex: 1;
+      height: 1.03rem;
+      box-sizing: border-box;
+      display: flex;
+      background: #004fa980;
+      border: 0.01rem solid #3773b1;
+      padding: 0.06rem 0.04rem;
+      flex-direction: column;
+      .time {
+        font-size: 0.14rem;
+        width: 100%;
+        background: #3d71b3;
+        height: 0.24rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .processBar {
+        width: 100%;
+        height: 0.14rem;
+        display: flex;
+        align-items: center;
+        margin: 0.08rem 0;
+        .processBarBg {
+          background: #1a62af;
+          width: 0.63rem;
+          height: 0.04rem;
+          margin-right: 0.06rem;
+          .processBarValue {
+            height: 100%;
+            background: linear-gradient(90deg, #0175da 0%, #00c3ff 100%);
+            position: relative;
+            &::after {
+              position: absolute;
+              top: -0.03rem;
+              right: -0.03rem;
+              width: 0.1rem;
+              height: 0.1rem;
+              background-color: #fff;
+              border-radius: 0.05rem;
+              display: block;
+              content: '';
+            }
+          }
+        }
+        .processBarValue {
+          font-size: 0.14rem;
+        }
+      }
+      .counts {
+        display: flex;
+        text-align: center;
+      }
+      .realTimeData {
+        width: 50%;
+        &.br {
+          border-right: 0.01rem dashed #7be5ff;
+        }
+        .mount {
+          height: 0.2rem;
+          font-size: 0.2rem;
+          line-height: 0.2rem;
+          font-weight: bold;
+        }
+        .notOk {
+          font-size: 0.12rem;
+          height: 0.17rem;
+          display: flex;
+          align-items: center;
+          &::before {
+            content: '';
+            display: block;
+            width: 0.06rem;
+            height: 0.06rem;
+            border-radius: 0.03rem;
+            background: #d93d66;
+            margin-right: 0.02rem;
+          }
+        }
+        .noData {
+          font-size: 0.12rem;
+          height: 0.17rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &::before {
+            content: '';
+            display: block;
+            width: 0.06rem;
+            height: 0.06rem;
+            border-radius: 0.03rem;
+            background: #ffd527;
+            margin-right: 0.02rem;
+          }
+        }
+      }
+    }
+  }
+  .forecast {
+    display: flex;
+    .leftLayout {
+      width: 0.82rem;
+      height: 0.82rem;
+      background: #3d71b3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .count {
+        color: #16f7b3;
+        font-size: 0.28rem;
+        font-weight: bold;
+        .unit {
+          font-size: 0.14rem;
+        }
+      }
+      .typeText {
+        font-size: 0.14rem;
+        line-height: 0.2rem;
+      }
+    }
+    .rightLayout {
+      width: 0;
+      height: max-content;
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      margin-left: 0.04rem;
+      .item {
+        width: 33.3333%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 0.4rem;
+        position: relative;
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 20%;
+          right: 0;
+          height: 60%;
+          width: 0.01rem;
+          border-right: 0.01rem dashed #7be5ff;
+        }
+        &.noborder {
+          &::after {
+            border-right: none;
+          }
+        }
+
+        .count {
+          color: #7be5ff;
+          font-size: 0.18rem;
+          font-weight: bold;
+          .unit {
+            font-weight: normal;
+            font-size: 0.14rem;
+            color: #fff;
+          }
+        }
+        .typeText {
+          font-size: 0.13rem;
+          line-height: 0.2rem;
+        }
+      }
+    }
+  }
+}

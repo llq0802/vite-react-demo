@@ -1,0 +1,42 @@
+.dashboard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-image: url(./assets//bg.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  .layoutContent {
+    width: 100%;
+    height: 0;
+    flex: 1;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.09rem 0.24rem;
+    gap: 0.1rem;
+    .layoutBorder {
+      width: 4.15rem;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .layoutCenter {
+      width: 0;
+      height: 100%;
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      .layoutCenterTop {
+        width: 100%;
+        height: 2.66rem;
+        display: flex;
+        gap: 0.1rem;
+      }
+    }
+  }
+}

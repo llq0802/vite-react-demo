@@ -3,5 +3,19 @@
 .container {
   @apply flex w-1/3 flex-col gap-3;
   min-width: 200px;
+
+  container-type: inline-size;
+  container-name: my-style-container;
+
   --custom-color: yellow;
+}
+
+.my_title {
+  font-size: 14px;
+}
+
+@container my-style-container (min-width: 400px) {
+  .my_title {
+    font-size: 20px;
+  }
 }

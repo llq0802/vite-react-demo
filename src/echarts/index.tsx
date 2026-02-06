@@ -37,8 +37,8 @@ const ChongqingTerrainMap = () => {
 
   return (
     <div className="flex h-full w-full flex-col bg-gray-800">
-      <ReactECharts ref={cqMainChartRef} option={cqMainOption} style={{ height: '35%', width: '100%' }} />
-      <ReactECharts ref={cqChartRef} option={cqOption} style={{ height: '65%', width: '100%' }} />
+      <ReactECharts ref={cqMainChartRef} option={cqMainOption} style={{ height: '35%', width: '100%' }} lazyUpdate />
+      <ReactECharts ref={cqChartRef} option={cqOption} style={{ height: '65%', width: '100%' }} lazyUpdate />
     </div>
   );
 };

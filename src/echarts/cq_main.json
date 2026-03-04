@@ -8,7 +8,7 @@
         "name": "渝中区",
         "level": "district",
         "center": [106.568955, 29.552642],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -183,7 +183,7 @@
         "name": "大渡口区",
         "level": "district",
         "center": [106.482299, 29.484464],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -649,7 +649,7 @@
         "name": "沙坪坝区",
         "level": "district",
         "center": [106.456939, 29.541017],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -1385,7 +1385,7 @@
         "name": "九龙坡区",
         "level": "district",
         "center": [106.510515, 29.502325],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2603,7 +2603,7 @@
         "name": "南岸区",
         "level": "district",
         "center": [106.644254, 29.50109],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2954,7 +2954,7 @@
         "name": "北碚区",
         "level": "district",
         "center": [106.395593, 29.805197],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -5212,7 +5212,7 @@
         "name": "巴南区",
         "level": "district",
         "center": [106.540603, 29.402348],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -6374,7 +6374,7 @@
         "name": "两江新区",
         "level": "district",
         "center": [106.566022, 29.642726],
-        "site": "https://geojson.hxkj.vip"
+        "site": "http://xxx.com"
       },
       "geometry": {
         "type": "MultiPolygon",

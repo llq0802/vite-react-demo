@@ -10,6 +10,7 @@ import Home from './home';
 import InfiniteScroll from './infinite-scroll';
 import Lexical from './lexical';
 import MessageList from './message-list';
+import NiiViewer from './nii-viewer';
 import Penpal from './penpal';
 import MyReactQuill from './react-quill';
 import ReactTracked from './react-tracked';
@@ -41,6 +42,7 @@ const routes: RouteObject[] = [
   { path: '/code-engine', element: <CodeEngine /> },
   { path: '/penpal', element: <Penpal /> },
   { path: '/echarts', element: <Echarts /> },
+  { path: '/nii-viewer', element: <NiiViewer /> },
 ];
 
 export default routes;

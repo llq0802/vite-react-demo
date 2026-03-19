@@ -2,7 +2,6 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react-swc';
 import fs from 'node:fs';
 import { defineConfig } from 'vite';
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
@@ -22,8 +21,14 @@ export default defineConfig({
       },
     },
   },
+
+  define: { foo: '"foo"' },
   css: {
     modules: {},
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
   },
-  define: { foo: '"foo"' },
 });

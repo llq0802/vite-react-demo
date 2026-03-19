@@ -1,10 +1,10 @@
-import { Button, Flex, Input, message } from 'antd';
+import { useLatest, useRequest } from 'ahooks';
+import { Button, Flex, Input } from 'antd';
 import React, { useRef, useState } from 'react';
-import { useInterval, useLatest, useMount, useRequest, useUpdateEffect, useUpdateLayoutEffect } from 'ahooks';
-import { findLastTextNode, mockRequest } from './utils';
+import Cmp from './cmp';
 import './index.less';
 import TestComponent from './test';
-import Cmp from './cmp';
+import { mockRequest } from './utils';
 
 const content = `lorem ipsum大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒大萨达撒
 啊实打实
@@ -134,15 +134,16 @@ export default () => {
   const countRef = useLatest(count);
 
   return (
-    <div className='w-full h-full p-8 mb-4 border-[1px] box-border'>
+    <div className="mb-4 box-border h-full w-full border-[1px] p-8">
       <Flex>
         <Input
           onChange={(e) => setState(e.target.value)}
           value={state}
-          placeholder='Please enter username'
+          placeholder="Please enter username"
           style={{ width: 240, marginRight: 16 }}
         />
         <Button
+          type="primary"
           disabled={loading}
           onClick={() => {
             const ret = onClick();
@@ -153,7 +154,7 @@ export default () => {
         </Button>
       </Flex>
       <hr />
-      <div className='container-text' ref={ref}>
+      <div className="container-text" ref={ref}>
         <ul>
           {/* <pre ref={preRef} className='pre'>
             {str}
@@ -174,18 +175,18 @@ export default () => {
       </div>
       <hr />
       <Flex vertical gap={24}>
-        <div className='contain-paint'>
-          <div className='paint'></div>
+        <div className="contain-paint">
+          <div className="paint"></div>
         </div>
 
-        <div className='contain-size'>
-          <div className='size'></div>
+        <div className="contain-size">
+          <div className="size"></div>
         </div>
       </Flex>
       <hr />
       <Flex vertical>
         <Button
-          type='primary'
+          type="primary"
           onClick={async () => {
             setCount(count + 1);
             requestAnimationFrame(() => {

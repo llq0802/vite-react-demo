@@ -12,7 +12,11 @@ const px2rem = px2remTransformer({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <StyleProvider layer transformers={[px2rem]}>
-      <ConfigProvider theme={{}}>
+      <ConfigProvider
+        theme={{
+          zeroRuntime: true,
+        }}
+      >
         <App />
       </ConfigProvider>
     </StyleProvider>

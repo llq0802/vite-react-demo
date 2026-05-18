@@ -59,7 +59,7 @@ const App: React.FC = () => {
           flex: '0 0 100px',
         }}
         getValueFromEvent={(e) => {
-          // 只在用户操作有效 =>如何获取原始值
+          // 只在用户操作有效 =>如何获取原始值value
           console.log('===getValueFromEvent-1===>', e);
           return e.target.value;
         }}

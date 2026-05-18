@@ -59,17 +59,17 @@ const App: React.FC = () => {
           flex: '0 0 100px',
         }}
         getValueFromEvent={(e) => {
-          // 只在用户操作有效
+          // 只在用户操作有效 =>如何获取原始值
           console.log('===getValueFromEvent-1===>', e);
           return e.target.value;
         }}
         normalize={(v, pv, s) => {
-          // 只在用户操作有效
+          // 只在用户操作有效.  =》转换原始值到form store
           console.log('===normalize-2===>', v);
           return v;
         }}
         getValueProps={(value) => {
-          //每次初始化或者重新渲染都有效
+          //每次初始化或者重新渲染都有效 =>form store 转换到子组件value
           console.log('===getValueProps-3===>', value);
           return { value };
         }}
